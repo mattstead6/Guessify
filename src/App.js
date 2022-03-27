@@ -1,18 +1,63 @@
 import './App.css';
-import { BrowserRouter, Routes, Route, Link, Outlet, useParams, useNavigate } from "react-router-dom"
+import { BrowserRouter, 
+         Routes, 
+         Route, 
+         Link, 
+         Outlet, 
+         useParams, 
+         useNavigate } from "react-router-dom"
+import {useEffect, useState} from "react"
+
+         
 
 
 function App() {
+  const [token, setToken] = useState("")
+      //variables needed for suthorization:
+  const CLIENT_ID = "ad207e953e224110b18641630a57a298" 
+  const REDIRECT_URI = "http://localhost:3000/"
+  const AUTH_ENDPOINT = "https://accounts.spotify.com/authorize"
+  const RESPONSE_TYPE = "token"
+
+
+  useEffect(() => {
+    const hash = window.location.hash;
+    let token = window.localStorage.getItem("token")
+
+    if (!token && hash) {
+      token = hash.substring(1).split("&").find(element => element.startsWith("access_token")).split("=")[1]
+
+      window.location.hash = ""
+      window.localStorage.setItem("token", token)
+    }
+
+    setToken(token)
+  }
+  , [])
+
+  const logout = () => {
+    setToken("")
+    window.localStorage.removeItem("token")
+  }
+
   let params = useParams();
   console.log(params)
 
   let navigate = useNavigate();
 
+  
   function handleSubmit(e){
     e.preventDefault();
-    //console.log(e.target.name.value);
-    navigate("/GameContainer", {state: {name: e.target.name.value, genre: "rock"}})
+    const {target: {name}} = e
+    console.log(e.target);
+    navigate("/GameContainer", {state: {name: name.value, genre: "rock", token: token}})
   }
+
+  function toggleGenre(e) {
+console.log(e)
+e.target.className= " active";
+  }
+
 
   return (
     <div className="App">
@@ -21,21 +66,22 @@ function App() {
         <label for="name">Name: </label>
         <input type="text" id="name" name="name" placeholder='Your name here...'></input>
 
-        <div className="form-check form-check-inline">
-          <input className="form-check-input" type="radio" name="rock" id="inlineRadio1" value="rock"/>
-          <label className="form-check-label" for="inlineRadio1">Rock</label>
-        </div>
-        <div className="form-check form-check-inline">
-          <input className="form-check-input" type="radio" name="pop" id="inlineRadio2" value="pop"/>
-          <label className="form-check-label" for="inlineRadio2">Pop</label>
-        </div>
-        <div className="form-check form-check-inline">
-          <input className="form-check-input" type="radio" name="classical" id="inlineRadio3" value="classical"/>
-          <label className="form-check-label" for="inlineRadio3">Classical</label>
+        <div className="btn-group btn-group-toggle" data-toggle="buttons">
+          <label className="btn btn-secondary">
+            <input type="radio" name="rock" id="option1" autocomplete="off" onClick={e => toggleGenre(e)}/> Rock
+          </label>
+          <label className="btn btn-secondary">
+            <input type="radio" name="pop" id="option2" autocomplete="off" onClick={e => toggleGenre(e)}/> Pop
+          </label>
+          <label className="btn btn-secondary">
+            <input type="radio" name="classical" id="option3" autocomplete="off" onClick={e => toggleGenre(e)}/> Classical
+          </label>
         </div>
         <button type="submit">Start the game!</button>
       </form>
     <button onClick={()=> navigate("./Leaderboard")}>Leaderboard</button>
+    {!token ? <a href={`${AUTH_ENDPOINT}?client_id=${CLIENT_ID}&redirect_uri=${REDIRECT_URI}&response_type=${RESPONSE_TYPE}`}>Login to Spotify</a>
+    : <button onClick={logout}>logout</button>}
     </div>
   );
 }
