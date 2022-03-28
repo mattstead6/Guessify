@@ -2,19 +2,16 @@
   "scores": [ {
     "id": 1,
     "username": "John Doe",
-    "genre": "Rock",
     "score": 25
               },
               {
     "id": 2,
     "username": "Jane Doe",
-    "genre": "Hip-Hop",
     "score": 30
               },
               {
     "id": 3,
     "username": "Joe Davola",
-    "genre": "Soul",
     "score": 0
               }
  ]

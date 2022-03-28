@@ -6,10 +6,11 @@ import React from "react";
 // depending on how data is coming in create an answers array of 4 choices with extracted song names .
 // iterate over that to create the li's
 
-function SongQuestion({correctSong, randomSongs}){
-
+function SongQuestion({ correctSong, allSongs, setOnAnswered }){
+    console.log('songQuestion rerender')
     // array of answers made up of current song and 3 random songs
-    const multipleChoice = [...randomSongs, correctSong].map(song => <li key={song.id} >{song.name}</li> ) 
+    const multipleChoice = allSongs.map(song => (
+    <li key={song.id} ><button onClick={e => setOnAnswered(true)} name={song.name}>{song.name}</button></li> ) )
 
     return (
         <>

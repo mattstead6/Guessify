@@ -48,8 +48,8 @@ function App() {
 
   // game details i.e player name as well as chosen genres and scored points need 
   // to be stateful data so that when player completes the game we can post data to leader board
-  // const resetPlayer = {username: "", genre: "", score: ""}
-  // const [playerData ,setPlayerData] = useState(resetPlayer) 
+  const resetPlayer = {username: "", score: 0}
+  const [playerData ,setPlayerData] = useState(resetPlayer) 
 
   function handleSubmitPlayerStats(playerData) {
     fetch(STAT_URL, fetchConfigObj('POST', playerData))
@@ -65,10 +65,6 @@ function App() {
     navigate("/GameContainer", {state: {name: name.value, genre: "classical", token: token}})
   }
 
-  function toggleGenre(e) {
-console.log(e)
-e.target.className= " active";
-  }
 
 
   return (
@@ -76,19 +72,8 @@ e.target.className= " active";
       <h2>Welcome to "Guess the Song Name" (title pending...)</h2>
       <form onSubmit={handleSubmit}>
         <label for="name">Name: </label>
-        <input type="text" id="name" name="name" placeholder='Your name here...'></input>
+        <input onChange={e =>   setPlayerData({...playerData, username: e.target.value})} type="text" id="name" name="name" placeholder='Your name here...'></input>
 
-        <div className="btn-group btn-group-toggle" data-toggle="buttons">
-          <label className="btn btn-secondary">
-            <input type="radio" name="rock" id="option1" autocomplete="off" onClick={e => toggleGenre(e)}/> Rock
-          </label>
-          <label className="btn btn-secondary">
-            <input type="radio" name="pop" id="option2" autocomplete="off" onClick={e => toggleGenre(e)}/> Pop
-          </label>
-          <label className="btn btn-secondary">
-            <input type="radio" name="classical" id="option3" autocomplete="off" onClick={e => toggleGenre(e)}/> Classical
-          </label>
-        </div>
         <button type="submit">Start the game!</button>
       </form>
     <button onClick={()=> navigate("./Leaderboard")}>Leaderboard</button>
