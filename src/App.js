@@ -48,8 +48,8 @@ function App() {
 
   // game details i.e player name as well as chosen genres and scored points need 
   // to be stateful data so that when player completes the game we can post data to leader board
-  // const resetPlayer = {username: "", genre: "", score: ""}
-  // const [playerData ,setPlayerData] = useState(resetPlayer) 
+  const resetPlayer = {username: "", score: 0}
+  const [playerData ,setPlayerData] = useState(resetPlayer) 
 
   function handleSubmitPlayerStats(playerData) {
     fetch(STAT_URL, fetchConfigObj('POST', playerData))
@@ -80,13 +80,13 @@ function App() {
 
   return (
     <div className="App">
+
     <Routes>
       <Route path="/" element={<Home handleSubmit={handleSubmit}/>} />
       <Route path="GameContainer" element={<GameContainer />} />
       <Route path="Leaderboard" element={<Leaderboard />} />
     </Routes>
-    
-      
+
     {/* <Link to="/Leaderboard">Leaderboard</Link> */}
     {!token ? <a href={`${AUTH_ENDPOINT}?client_id=${CLIENT_ID}&redirect_uri=${REDIRECT_URI}&response_type=${RESPONSE_TYPE}`}>Login to Spotify</a>
     : <button onClick={logout}>logout</button>}

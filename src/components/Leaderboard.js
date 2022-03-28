@@ -14,7 +14,6 @@ function Leaderboard () {
         const displayBoard = scores.map(score => (
               <tr key={score.id} >
                     <td>{score.username}</td>
-                    <td>{score.genre}</td>
                     <td>{score.score}</td>
               </tr>  
         ))
