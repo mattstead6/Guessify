@@ -1,17 +1,16 @@
 
 import { useState, useEffect } from "react";
-import {link, Outlet, useLocation, useParams} from "react-router-dom";
-// import SongQuestion from "./SongQuestion";
+import { useLocation, useParams} from "react-router-dom";
+import SongQuestion from "./SongQuestion";
 
 
 
-function GameContainer() {
+function GameContainer({setPlayerData}) {
     const location = useLocation();
 
     const [correctSong ,setCorrectSong] = useState({}) 
     const [allSongs ,setAllSongs] = useState([]) 
     const [timeRemaining, setTimeRemaining] = useState(10);
-    const [onAnswered ,setOnAnswered] = useState(false) 
     // useEffect(()=>{
     //     the intial get request for the songs
     //     expecting this data to be multiple songs
@@ -28,6 +27,7 @@ function GameContainer() {
     const alphabet = "abcdefghijklmnopqrstuvwxyz"
     let randomChar = alphabet.charAt(Math.floor(Math.random() * alphabet.length))
 
+    console.log('game container render')
    
     useEffect(() => { //retrieves initial song data
        if (!allSongs.find(song => song.preview_url)) getSongs()
@@ -36,13 +36,21 @@ function GameContainer() {
         setTimeRemaining(timeRemaining - 1)
         }
         else{
+          getSongs()  
           setTimeRemaining(10)
-          setOnAnswered(false)
         }
       },1000) ;
       return () => {clearTimeout(timeID)}  
         
-    }, [allSongs, timeRemaining, onAnswered])
+    }, [timeRemaining])
+
+    function handleAnswer(answer) {
+        getSongs()
+        setTimeRemaining(10)
+        if (answer === correctSong.name){
+            setPlayerData(prev => ({...prev, score: prev.score + 5}))
+        }
+    }
     
 
     
@@ -57,11 +65,11 @@ function GameContainer() {
             }})
             .then( res => res.json())
             .then( data => handleSongBatch(data.tracks.items))
+            // setTimeRemaining(0)
         }
         
-        
         function handleSongBatch(songs) {
-            setCorrectSong(prev => songs.find(song => song.preview_url))
+            setCorrectSong(() => songs.find(song => song.preview_url))
             setAllSongs(songs)
     }
     
@@ -73,13 +81,11 @@ function GameContainer() {
         <div>
             <h2>Success, You are in the game container</h2>
             <p>Your name: {location.state.name}</p>
-            <p>Your chosen genre: {location.state.genre}</p>
 
 
-            <SongQuestion currentSong={correctSong} allSongs={allSongs} setOnAnswered={setOnAnswered}/>
-            <p>your token is {location.state.token}</p>
+            {correctSong ? <SongQuestion correctSong={correctSong} allSongs={allSongs} handleAnswer={handleAnswer}/> : <h2>Loading</h2> }
             
-             <h3>{timeRemaining} seconds left before next songQuestion is displayed</h3>
+             <h3>{timeRemaining} seconds left</h3>
 
 
         </div>
