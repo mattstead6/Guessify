@@ -27,7 +27,7 @@ function App() {
   useEffect(() => {
     const hash = window.location.hash;
     let token = window.localStorage.getItem("token")
-    console.log(window.location)
+
 
     if (!token && hash) {
       token = hash.substring(1).split("&").find(element => element.startsWith("access_token")).split("=")[1]
@@ -44,7 +44,7 @@ function App() {
   }
 
   let params = useParams();
-  console.log(params)
+
 
   // game details i.e player name as well as chosen genres and scored points need 
   // to be stateful data so that when player completes the game we can post data to leader board
@@ -83,7 +83,7 @@ function App() {
 
     <Routes>
       <Route path="/" element={<Home handleSubmit={handleSubmit}/>} />
-      <Route path="GameContainer" element={<GameContainer />} />
+      <Route path="GameContainer" element={<GameContainer setPlayerData={setPlayerData}/>} />
       <Route path="Leaderboard" element={<Leaderboard />} />
     </Routes>
 
