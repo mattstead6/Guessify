@@ -1,6 +1,6 @@
 import {link, useLocation, useParams} from "react-router-dom";
 import {useState, useEffect} from "react"
-import SongQuiz from "./SongQuiz";
+
 
 
 function GameContainer() {
@@ -15,7 +15,12 @@ function GameContainer() {
     let randomChar = alphabet.charAt(Math.floor(Math.random() * alphabet.length))
 
     useEffect(() => { //retrieves initial song data
+        getSongs();
+        
+    }, [])
 
+
+    function getSongs() {
         fetch(`https://api.spotify.com/v1/search?q=%25${randomChar}%25&type=track&limit=4&offset=${Math.floor(Math.random() * 1000)}`, 
         {
             method: 'GET',
@@ -25,9 +30,7 @@ function GameContainer() {
             }})
             .then( res => res.json())
             .then( data => setSongList(data.tracks.items))
-        
-    }, [])
-
+    }
     console.log(songList)
    
     
@@ -42,7 +45,7 @@ function GameContainer() {
             <p>Your name: {location.state.name}</p>
             <p>Your chosen genre: {location.state.genre}</p>
             <p>your token is {location.state.token}</p>
-            <SongQuiz songList={songList}/>
+            
         </div>
     )
 }
