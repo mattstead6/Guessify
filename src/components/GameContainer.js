@@ -1,12 +1,13 @@
 
 import { useState, useEffect } from "react";
-import {link, useLocation, useParams} from "react-router-dom";
-import SongQuestion from "./SongQuestion";
+import {link, Outlet, useLocation, useParams} from "react-router-dom";
+// import SongQuestion from "./SongQuestion";
 
 
 
 function GameContainer() {
     const location = useLocation();
+
     const [correctSong ,setCorrectSong] = useState({}) 
     const [allSongs ,setAllSongs] = useState([]) 
     const [timeRemaining, setTimeRemaining] = useState(10);
@@ -21,11 +22,13 @@ function GameContainer() {
     // })
 
 
+
     let params = useParams();
 
     const alphabet = "abcdefghijklmnopqrstuvwxyz"
     let randomChar = alphabet.charAt(Math.floor(Math.random() * alphabet.length))
 
+   
     useEffect(() => { //retrieves initial song data
        if (!allSongs.find(song => song.preview_url)) getSongs()
        const timeID = setTimeout(() => {
@@ -72,10 +75,12 @@ function GameContainer() {
             <p>Your name: {location.state.name}</p>
             <p>Your chosen genre: {location.state.genre}</p>
 
+
             <SongQuestion currentSong={correctSong} allSongs={allSongs} setOnAnswered={setOnAnswered}/>
             <p>your token is {location.state.token}</p>
             
              <h3>{timeRemaining} seconds left before next songQuestion is displayed</h3>
+
 
         </div>
     )

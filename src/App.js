@@ -8,7 +8,9 @@ import { BrowserRouter,
          useParams, 
          useNavigate } from "react-router-dom"
 import {useEffect, useState} from "react"
-// import GameContainer from './components/GameContainer';
+import GameContainer from './components/GameContainer';
+import Leaderboard from './components/Leaderboard';
+import Home from './components/Home';
 
          
 
@@ -33,10 +35,8 @@ function App() {
       window.location.hash = ""
       window.localStorage.setItem("token", token)
     }
-
     setToken(token)
-  }
-  , [])
+  }, [])
 
   const logout = () => {
     setToken("")
@@ -62,27 +62,35 @@ function App() {
     e.preventDefault();
     const {target: {name}} = e
     console.log(e.target);
-    navigate("/GameContainer", {state: {name: name.value, genre: "classical", token: token}})
+    navigate("./GameContainer", {state: {name: name.value, genre: "classical", token: token}})
   }
 
-
+  function getUserData() {
+  fetch(`https://api.spotify.com/v1/me`, {
+      method: "GET",
+      headers: {
+          "Authorization": token,
+          "Content-Type": "application/json",
+              },
+  })
+  .then( res => res.json())
+  .then( data => console.log(data))
+  .catch( error => console.log(error.message));
+  }
 
   return (
     <div className="App">
-      <h2>Welcome to "Guess the Song Name" (title pending...)</h2>
-      <form onSubmit={handleSubmit}>
-        <label for="name">Name: </label>
-        <input onChange={e =>   setPlayerData({...playerData, username: e.target.value})} type="text" id="name" name="name" placeholder='Your name here...'></input>
 
-        <button type="submit">Start the game!</button>
-      </form>
-    <button onClick={()=> navigate("./Leaderboard")}>Leaderboard</button>
+    <Routes>
+      <Route path="/" element={<Home handleSubmit={handleSubmit}/>} />
+      <Route path="GameContainer" element={<GameContainer />} />
+      <Route path="Leaderboard" element={<Leaderboard />} />
+    </Routes>
+
     {/* <Link to="/Leaderboard">Leaderboard</Link> */}
     {!token ? <a href={`${AUTH_ENDPOINT}?client_id=${CLIENT_ID}&redirect_uri=${REDIRECT_URI}&response_type=${RESPONSE_TYPE}`}>Login to Spotify</a>
     : <button onClick={logout}>logout</button>}
-    {/* <div>
-      <GameContainer />
-    </div> */}
+   <button onClick={getUserData}>get user data</button>
     </div>
 
   );
