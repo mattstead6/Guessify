@@ -1,11 +1,11 @@
 
 import { useState, useEffect } from "react";
-import {link, Outlet, useLocation, useParams} from "react-router-dom";
-// import SongQuestion from "./SongQuestion";
+import {Link, Outlet, useLocation, useParams} from "react-router-dom";
+import SongQuestion from "./SongQuestion";
 
 
 
-function GameContainer() {
+function GameContainer({token}) {
     const location = useLocation();
 
     const [correctSong ,setCorrectSong] = useState({}) 
@@ -22,8 +22,6 @@ function GameContainer() {
     // })
 
 
-
-    let params = useParams();
 
     const alphabet = "abcdefghijklmnopqrstuvwxyz"
     let randomChar = alphabet.charAt(Math.floor(Math.random() * alphabet.length))
@@ -48,12 +46,12 @@ function GameContainer() {
     
     
     function getSongs() {
-        fetch(`https://api.spotify.com/v1/search?q=%25${randomChar}%25&type=track&limit=4&offset=${Math.floor(Math.random() * 1000)}`, 
+        fetch(`https://api.spotify.com/v1/search?q=%25${randomChar}%25&type=track&limit=4&offset=${100 + Math.floor(Math.random() * 1000)}`, 
         {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
-                'Authorization': 'Bearer ' + location.state.token
+                'Authorization': 'Bearer ' + token
             }})
             .then( res => res.json())
             .then( data => handleSongBatch(data.tracks.items))
@@ -61,7 +59,9 @@ function GameContainer() {
         
         
         function handleSongBatch(songs) {
-            setCorrectSong(prev => songs.find(song => song.preview_url))
+            
+
+            setCorrectSong(() => songs.find(song => song.preview_url))
             setAllSongs(songs)
     }
     
@@ -73,12 +73,8 @@ function GameContainer() {
         <div>
             <h2>Success, You are in the game container</h2>
             <p>Your name: {location.state.name}</p>
-            <p>Your chosen genre: {location.state.genre}</p>
 
-
-            <SongQuestion currentSong={correctSong} allSongs={allSongs} setOnAnswered={setOnAnswered}/>
-            <p>your token is {location.state.token}</p>
-            
+            <SongQuestion correctSong={correctSong} allSongs={allSongs} setOnAnswered={setOnAnswered}/>            
              <h3>{timeRemaining} seconds left before next songQuestion is displayed</h3>
 
 
