@@ -17,7 +17,7 @@ import Home from './components/Home';
 
 function App() {
   const [token, setToken] = useState("")
-      //variables needed for suthorization:
+      //variables needed for authorization:
   const CLIENT_ID = "ad207e953e224110b18641630a57a298" 
   const REDIRECT_URI = "http://localhost:3000/"
   const AUTH_ENDPOINT = "https://accounts.spotify.com/authorize"
@@ -43,6 +43,7 @@ function App() {
     window.localStorage.removeItem("token")
   }
 
+
   let params = useParams();
 
 
@@ -65,32 +66,19 @@ function App() {
     navigate("./GameContainer", {state: {name: name.value, genre: "classical", token: token}})
   }
 
-  function getUserData() {
-  fetch(`https://api.spotify.com/v1/me`, {
-      method: "GET",
-      headers: {
-          "Authorization": token,
-          "Content-Type": "application/json",
-              },
-  })
-  .then( res => res.json())
-  .then( data => console.log(data))
-  .catch( error => console.log(error.message));
-  }
 
   return (
     <div className="App">
-
     <Routes>
       <Route path="/" element={<Home handleSubmit={handleSubmit}/>} />
+
       <Route path="GameContainer" element={<GameContainer setPlayerData={setPlayerData}/>} />
+
       <Route path="Leaderboard" element={<Leaderboard />} />
     </Routes>
 
-    {/* <Link to="/Leaderboard">Leaderboard</Link> */}
     {!token ? <a href={`${AUTH_ENDPOINT}?client_id=${CLIENT_ID}&redirect_uri=${REDIRECT_URI}&response_type=${RESPONSE_TYPE}`}>Login to Spotify</a>
     : <button onClick={logout}>logout</button>}
-   <button onClick={getUserData}>get user data</button>
     </div>
 
   );

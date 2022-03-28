@@ -1,11 +1,15 @@
 
 import { useState, useEffect } from "react";
+
 import { useLocation, useParams} from "react-router-dom";
+
 import SongQuestion from "./SongQuestion";
 
 
 
+
 function GameContainer({setPlayerData}) {
+
     const location = useLocation();
 
     const [correctSong ,setCorrectSong] = useState({}) 
@@ -21,8 +25,6 @@ function GameContainer({setPlayerData}) {
     // })
 
 
-
-    let params = useParams();
 
     const alphabet = "abcdefghijklmnopqrstuvwxyz"
     let randomChar = alphabet.charAt(Math.floor(Math.random() * alphabet.length))
@@ -56,12 +58,12 @@ function GameContainer({setPlayerData}) {
     
     
     function getSongs() {
-        fetch(`https://api.spotify.com/v1/search?q=%25${randomChar}%25&type=track&limit=4&offset=${Math.floor(Math.random() * 1000)}`, 
+        fetch(`https://api.spotify.com/v1/search?q=%25${randomChar}%25&type=track&limit=4&offset=${100 + Math.floor(Math.random() * 1000)}`, 
         {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
-                'Authorization': 'Bearer ' + location.state.token
+                'Authorization': 'Bearer ' + token
             }})
             .then( res => res.json())
             .then( data => handleSongBatch(data.tracks.items))
@@ -69,6 +71,7 @@ function GameContainer({setPlayerData}) {
         }
         
         function handleSongBatch(songs) {
+
             setCorrectSong(() => songs.find(song => song.preview_url))
             setAllSongs(songs)
     }
@@ -83,9 +86,11 @@ function GameContainer({setPlayerData}) {
             <p>Your name: {location.state.name}</p>
 
 
+
             {correctSong ? <SongQuestion correctSong={correctSong} allSongs={allSongs} handleAnswer={handleAnswer}/> : <h2>Loading</h2> }
             
              <h3>{timeRemaining} seconds left</h3>
+
 
 
         </div>

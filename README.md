@@ -17,7 +17,14 @@ Game Rules:
 
 To-dos:
 
-- set App as parent component to GameContainer, LeaderBoard
-- Set GameContainer component as parent to SongQuestion
-- pass values from App to GameConntainer as props, innstead of through useLocation()
--
+- set total gametime timer
+- state variable with user name, user score in App.js, to be passd down to GameContainer and Leaderboard
+- improve search algorithm to avoid showign duplicate songs
+- CSS stylings
+  . - persist correct song data in db.json
+- end of game flow
+
+Bugs:
+
+- iFrame rendering occasional app crash
+- iframe loading
