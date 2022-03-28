@@ -1,31 +1,34 @@
 import {link, useLocation, useParams} from "react-router-dom";
 import {useState, useEffect} from "react"
+import SongQuiz from "./SongQuiz";
 
 
 function GameContainer() {
     const location = useLocation();
-    const {state: {name, genre, token}} = location
-    console.log(location, "name: ", name)
-    console.log("genre: ", genre)
-    console.log("token: ", token)
+    const [songList, setSongList] = useState([]);
 
 
     let params = useParams();
-  console.log(params)
+    console.log(location)
 
-    useEffect(() => { //retrieves initial sonng data
+    const alphabet = "abcdefghijklmnopqrstuvwxyz"
+    let randomChar = alphabet.charAt(Math.floor(Math.random() * alphabet.length))
 
-        fetch(`https://api.spotify.com/v1/search?q=%25f%25&type=track&offset=${Math.floor(Math.random() * 1000)}`, 
+    useEffect(() => { //retrieves initial song data
+
+        fetch(`https://api.spotify.com/v1/search?q=%25${randomChar}%25&type=track&limit=4&offset=${Math.floor(Math.random() * 1000)}`, 
         {
             method: 'GET',
-        headers: {
-          'Content-Type': 'application/json',
-          'Authorization': 'Bearer ' + location.state.token
-        }})
-        .then( res => res.json())
-        .then( data => console.log(data))
+            headers: {
+            'Content-Type': 'application/json',
+            'Authorization': 'Bearer ' + location.state.token
+            }})
+            .then( res => res.json())
+            .then( data => setSongList(data.tracks.items))
         
-    }, [location.state.token])
+    }, [])
+
+    console.log(songList)
    
     
     
@@ -39,7 +42,7 @@ function GameContainer() {
             <p>Your name: {location.state.name}</p>
             <p>Your chosen genre: {location.state.genre}</p>
             <p>your token is {location.state.token}</p>
-            
+            <SongQuiz songList={songList}/>
         </div>
     )
 }
