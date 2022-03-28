@@ -1,19 +1,21 @@
 {
-  "posts": [
-    {
-      "id": 1,
-      "title": "json-server",
-      "author": "typicode"
-    }
-  ],
-  "comments": [
-    {
-      "id": 1,
-      "body": "some comment",
-      "postId": 1
-    }
-  ],
-  "profile": {
-    "name": "typicode"
-  }
+  "scores": [ {
+    "id": 1,
+    "username": "John Doe",
+    "genre": "Rock",
+    "score": 25
+              },
+              {
+    "id": 2,
+    "username": "Jane Doe",
+    "genre": "Hip-Hop",
+    "score": 30
+              },
+              {
+    "id": 3,
+    "username": "Joe Davola",
+    "genre": "Soul",
+    "score": 0
+              }
+ ]
 }

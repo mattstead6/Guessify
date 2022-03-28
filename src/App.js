@@ -1,4 +1,5 @@
 import './App.css';
+import { fetchConfigObj, STAT_URL } from './components/utilites';
 import { BrowserRouter, 
          Routes, 
          Route, 
@@ -44,6 +45,15 @@ function App() {
 
   let params = useParams();
   console.log(params)
+
+  // game details i.e player name as well as chosen genres and scored points need 
+  // to be stateful data so that when player completes the game we can post data to leader board
+  // const resetPlayer = {username: "", genre: "", score: ""}
+  // const [playerData ,setPlayerData] = useState(resetPlayer) 
+
+  function handleSubmitPlayerStats(playerData) {
+    fetch(STAT_URL, fetchConfigObj('POST', playerData))
+  }
 
   let navigate = useNavigate();
 
