@@ -7,6 +7,7 @@ import { BrowserRouter,
          useParams, 
          useNavigate } from "react-router-dom"
 import {useEffect, useState} from "react"
+// import GameContainer from './components/GameContainer';
 
          
 
@@ -23,6 +24,7 @@ function App() {
   useEffect(() => {
     const hash = window.location.hash;
     let token = window.localStorage.getItem("token")
+    console.log(window.location)
 
     if (!token && hash) {
       token = hash.substring(1).split("&").find(element => element.startsWith("access_token")).split("=")[1]
@@ -50,7 +52,7 @@ function App() {
     e.preventDefault();
     const {target: {name}} = e
     console.log(e.target);
-    navigate("/GameContainer", {state: {name: name.value, genre: "rock", token: token}})
+    navigate("/GameContainer", {state: {name: name.value, genre: "classical", token: token}})
   }
 
   function toggleGenre(e) {
@@ -80,9 +82,14 @@ e.target.className= " active";
         <button type="submit">Start the game!</button>
       </form>
     <button onClick={()=> navigate("./Leaderboard")}>Leaderboard</button>
+    {/* <Link to="/Leaderboard">Leaderboard</Link> */}
     {!token ? <a href={`${AUTH_ENDPOINT}?client_id=${CLIENT_ID}&redirect_uri=${REDIRECT_URI}&response_type=${RESPONSE_TYPE}`}>Login to Spotify</a>
     : <button onClick={logout}>logout</button>}
+    {/* <div>
+      <GameContainer />
+    </div> */}
     </div>
+
   );
 }
 

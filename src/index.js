@@ -11,12 +11,12 @@ import {
 // import reportWebVitals from './reportWebVitals';
 
 render( 
-  <BrowserRouter>
-    <Routes>
-      <Route path="/" element={<App />} />
-      <Route path="/GameContainer" element={<GameContainer />} />
-      <Route path="/Leaderboard" element={<Leaderboard />} />
-      
-    </Routes>
-  </BrowserRouter>,
+<BrowserRouter>
+  <Routes>
+    <Route path="/" element={<App />} />
+    <Route path="/GameContainer" element={<GameContainer />} />
+    <Route path="/Leaderboard" element={<Leaderboard />} />
+    
+  </Routes>
+</BrowserRouter>,
  document.getElementById('root'));
