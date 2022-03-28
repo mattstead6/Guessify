@@ -14,3 +14,10 @@ Game Rules:
 -10 points per wrong answer
 -5 points per skip
 -5 points per auto-refresh-song
+
+To-dos:
+
+- set App as parent component to GameContainer, LeaderBoard
+- Set GameContainer component as parent to SongQuestion
+- pass values from App to GameConntainer as props, innstead of through useLocation()
+-
