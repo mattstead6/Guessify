@@ -1,76 +1,51 @@
 
 import { useState, useEffect } from "react";
+
 import SongQuestion from "./SongQuestion";
+import { fetchConfigObj, STAT_URL } from "./utilites";
+import {useNavigate} from "react-router-dom"
+
+
+function GameContainer({setPlayerData, token, playerData}) {
+
+    //full gametimer, player has 60 seconds to guess as many songs as possible
+    const [gameTimer ,setGameTimer] = useState(60) 
+    const [gameOver ,setGameOver] = useState(false) 
+    const navigate = useNavigate()
 
 
 
 
-function GameContainer({setPlayerData, token}) {
 
-
-    const [correctSong ,setCorrectSong] = useState({}) 
-    const [allSongs ,setAllSongs] = useState([]) 
-    const [timeRemaining, setTimeRemaining] = useState(10);
-    // useEffect(()=>{
-    //     the intial get request for the songs
-    //     expecting this data to be multiple songs
-    //     ex aply it to song question component.
-    //     set a timer so that the user has 10 sec to answer if not move to next song. 
-    //     as well as reset timer
-    //     the dependency for this useEffect would be the timer when it hits 0
-    // })
-
-
-
-    const alphabet = "abcdefghijklmnopqrstuvwxyz"
-    let randomChar = alphabet.charAt(Math.floor(Math.random() * alphabet.length))
 
     console.log('game container render')
    
     useEffect(() => { //retrieves initial song data
-       if (!allSongs.find(song => song.preview_url)) getSongs()
        const timeID = setTimeout(() => {
-        if (timeRemaining > 0) {
-        setTimeRemaining(timeRemaining - 1)
+        if (gameTimer > 0) {
+        setGameTimer(gameTimer - 1)
+        console.log(gameTimer)
         }
         else{
-          getSongs()  
-          setTimeRemaining(10)
+            setGameOver(true)
+            handlePOSTRecord()
         }
       },1000) ;
       return () => {clearTimeout(timeID)}  
         
-    }, [timeRemaining])
+    }, [gameTimer])
 
-    function handleAnswer(answer) {
-        getSongs()
-        setTimeRemaining(10)
-        if (answer === correctSong.name){
-            setPlayerData(prev => ({...prev, score: prev.score + 5}))
-        }
+    
+    
+
+    
+
+    function handlePOSTRecord(){
+       fetch(STAT_URL, fetchConfigObj('POST', playerData))
+       .then(resp => {if (resp.ok) navigate("/Leaderboard")} )
+
     }
-    
 
-    
-    
-    function getSongs() {
-        fetch(`https://api.spotify.com/v1/search?q=%25${randomChar}%25&type=track&limit=4&offset=${100 + Math.floor(Math.random() * 1000)}`, 
-        {
-            method: 'GET',
-            headers: {
-                'Content-Type': 'application/json',
-                'Authorization': 'Bearer ' + token
-            }})
-            .then( res => res.json())
-            .then( data => handleSongBatch(data.tracks.items))
-            // setTimeRemaining(0)
-        }
-        
-        function handleSongBatch(songs) {
-
-            setCorrectSong(() => songs.find(song => song.preview_url))
-            setAllSongs(songs)
-    }
     
 
 
@@ -79,15 +54,14 @@ function GameContainer({setPlayerData, token}) {
     return (
         <div>
             <h2>Success, You are in the game container</h2>
-            <p>Your name: {""}</p>
+
+            <p>Your name: {playerData.username}</p>
 
 
 
-            {correctSong ? <SongQuestion correctSong={correctSong} allSongs={allSongs} handleAnswer={handleAnswer}/> : <h2>Loading</h2> }
+
+            {!gameOver? <SongQuestion token={token} setPlayerData={setPlayerData} /> : null}
             
-             <h3>{timeRemaining} seconds left</h3>
-
-
 
         </div>
     )
