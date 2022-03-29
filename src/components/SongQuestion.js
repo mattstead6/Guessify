@@ -1,12 +1,11 @@
 import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 
 
-function SongQuestion({setPlayerData, token}){
+function SongQuestion({setPlayerData, token, correctAnswers, setCorrectAnswers}){
 
     console.log('songQuestion rerender')
-
-
 
     // question timer moved into songQuestion for bug purposes and to make it more modular
     const [correctSong ,setCorrectSong] = useState({}) 
@@ -22,6 +21,7 @@ function SongQuestion({setPlayerData, token}){
          setTimeRemaining(timeRemaining - 1)
          }
          else{
+           
            getSongs()  
            setTimeRemaining(10)
          }
@@ -45,9 +45,11 @@ function SongQuestion({setPlayerData, token}){
         }
         
         function handleSongBatch(songs) {
-            setCorrectSong(() => songs.find(song => song.preview_url))
-            setAllSongs(songs)
+            setCorrectSong(songs.find(song => song.preview_url))
+            setAllSongs(songs)    
+            setCorrectAnswers((prev) => [...prev, correctSong])     
     }
+
 
 
     function handleAnswer(answer) {
@@ -57,7 +59,7 @@ function SongQuestion({setPlayerData, token}){
             setPlayerData(prev => ({...prev, score: prev.score + 5,totalcorrect: prev.totalcorrect + 1,totalplayed: prev.totalplayed + 1}))
         }
         else{
-            setPlayerData(prev => ({...prev,totalplayed: prev.totalplayed + 1}))
+            setPlayerData(prev => ({...prev, totalplayed: prev.totalplayed + 1}))
         }
     }
 

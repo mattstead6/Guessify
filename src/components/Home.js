@@ -1,9 +1,12 @@
-import {useNavigate} from "react-router-dom"
+import {useNavigate} from "react-router-dom";
+import {useEffect} from "react";
 
-function Home({handleSubmit, setPlayerData, playerData }) {
-
+function Home({handleSubmit, setPlayerData, playerData, resetPlayerdata}) {
+    useEffect(() => (
+        resetPlayerdata()
+    ),[])
     
-
+    
     const navigate = useNavigate();
 
     return (
@@ -16,7 +19,7 @@ function Home({handleSubmit, setPlayerData, playerData }) {
                 <button type="submit">Start the game!</button>
             </form>
       
-            <button onClick={()=> navigate("./Leaderboard")}
+            <button onClick={() => navigate("./Leaderboard")}
             >Leaderboard</button>
         </>
     )

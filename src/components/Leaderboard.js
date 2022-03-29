@@ -4,34 +4,63 @@ import { STAT_URL, } from "./utilites";
 import GameOver from "./GameOver";
 
 
-
-
-function Leaderboard () {
-    const [scores ,setScores] = useState([]) 
-
+function Leaderboard ({playerData, correctAnswers}) {
+    const [scores, setScores] = useState([]) 
     const navigate = useNavigate()
+    console.log(correctAnswers)
 
-
-        const displayBoard = scores.map(score => (
-              <tr key={score.id} >
-                    <td>{score.username}</td>
-                    <td>{score.score}</td>
-              </tr>  
-        ))
+    console.log(playerData)
     
-
     useEffect(()=> {
         fetch(STAT_URL)
         .then(resp => resp.json())
-        .then(scoreData => setScores(scoreData))
+        .then(scoreData => {
+            console.log(scoreData)
+            const sortedScores = scoreData.sort((a, b) => {
+                return b.score - a.score
+            })
+
+            console.log(sortedScores)
+            setScores(sortedScores)
+        })
     },[])
 
-    return (
-        <div>
+    const displayBoard = scores.map(score => (
+        <tr key={score.id} >
+            <td><li>{score.username}</li></td>
+            <td>{score.score}</td>
+        </tr>  
+    ))
 
-        <GameOver/>
+
+     function displayCorrectAnswers() {
+
+        const editedAnswers = 
+        correctAnswers.map(answer => {
+            console.log(answer)
+            if (answer.name === undefined)
+                return null
+            else  {
+                return (
+                    <li>
+                        <b>Name: </b>{answer.name}, <b>artist: </b>{answer.artists.name}, 
+                        <a
+                        className="spotify-link"
+                        href={"https://open.spotify.com/track/" + answer.id}>open in spotify</a>
+                    </li>               
+                 )}
+        })
+       
+    }
+
+
+    console.log(scores)
+    return (
+        <div>  
+       {playerData.totalplayed !== 0 ? <GameOver playerData={playerData}/> : null}
         <h3>Leaderboard</h3>
-            <table>
+            <ol>
+            <table className="leaderboard-table">
                 <thead>
                 <tr>
                     <th>Name</th>
@@ -39,15 +68,17 @@ function Leaderboard () {
                 </tr>
                 </thead>
                 <tbody>
-
-                <tr>
-                    <td>Sample name</td>
-                    <td>50 pts</td>
-                </tr>
-                {displayBoard}
+                    
+                        {displayBoard}
+                    
                 </tbody>
             </table>
-            <button onClick={()=> navigate("./GameContainer")}>Play Again?</button>
+            </ol>
+            <ul>
+                <li>Song List: </li>
+                {displayCorrectAnswers()}
+            </ul>
+            <button onClick={()=> navigate("../GameContainer")}>Play Again?</button>
         </div>
     )
 }
