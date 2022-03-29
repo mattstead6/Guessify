@@ -1,4 +1,4 @@
-import React from "react";
+import { useEffect } from "react";
 
 export function fetchConfigObj(method, body) {
   return { method,
@@ -7,5 +7,12 @@ export function fetchConfigObj(method, body) {
            body : JSON.stringify(body)
          }
 }
+
+export function useDocumentTitle(title) {
+  useEffect(()=> {
+    document.title = title
+  },[title])
+}
+
 
 export const STAT_URL = "http://localhost:3001/scores"

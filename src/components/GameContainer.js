@@ -1,9 +1,9 @@
 
 import { useState, useEffect } from "react";
-
+import { useDocumentTitle } from "./utilites";
 import SongQuestion from "./SongQuestion";
 import { fetchConfigObj, STAT_URL } from "./utilites";
-import {useNavigate} from "react-router-dom"
+import { useNavigate } from "react-router-dom"
 
 
 function GameContainer({setPlayerData, token, playerData}) {
@@ -12,13 +12,11 @@ function GameContainer({setPlayerData, token, playerData}) {
     const [gameTimer ,setGameTimer] = useState(60) 
     const [gameOver ,setGameOver] = useState(false) 
     const navigate = useNavigate()
+    useDocumentTitle('GUESSIFY GAME TIME')
 
 
 
 
-
-
-    console.log('game container render')
    
     useEffect(() => { //retrieves initial song data
        const timeID = setTimeout(() => {

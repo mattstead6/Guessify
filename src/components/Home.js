@@ -1,8 +1,13 @@
 import {useNavigate} from "react-router-dom"
+
+import { useDocumentTitle } from "./utilites";
+
+
 import "../style.css"
 import logo from "../GUESSIFY.png"
 
-function Home({handleSubmit, setPlayerData, playerData, handleHomeClick }) {
+function Home({handleSubmit, setPlayerData, playerData }) {
+
 
     
 
