@@ -1,18 +1,33 @@
 {
-  "scores": [ {
-    "id": 1,
-    "username": "John Doe",
-    "score": 25
-              },
-              {
-    "id": 2,
-    "username": "Jane Doe",
-    "score": 30
-              },
-              {
-    "id": 3,
-    "username": "Joe Davola",
-    "score": 0
-              }
- ]
+  "scores": [
+    {
+      "id": 1,
+      "username": "John Doe",
+      "score": 25
+    },
+    {
+      "id": 2,
+      "username": "Jane Doe",
+      "score": 30
+    },
+    {
+      "id": 3,
+      "username": "Joe Davola",
+      "score": 0
+    },
+    {
+      "username": "",
+      "score": 30,
+      "totalcorrect": 6,
+      "totalplayed": 9,
+      "id": 4
+    },
+    {
+      "username": "Daniel Brito",
+      "score": 45,
+      "totalcorrect": 9,
+      "totalplayed": 45,
+      "id": 5
+    }
+  ]
 }
