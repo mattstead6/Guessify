@@ -32,7 +32,6 @@ function Leaderboard () {
                 <thead>
                 <tr>
                     <th>Name</th>
-                    <th>Genre</th>
                     <th>Final Score</th>
                 </tr>
                 </thead>
@@ -40,7 +39,6 @@ function Leaderboard () {
 
                 <tr>
                     <td>Sample name</td>
-                    <td>Rock</td>
                     <td>50 pts</td>
                 </tr>
                 {displayBoard}
