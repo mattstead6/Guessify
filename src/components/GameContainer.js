@@ -1,5 +1,6 @@
 
 import { useState, useEffect } from "react";
+
 import SongQuestion from "./SongQuestion";
 import { fetchConfigObj, STAT_URL } from "./utilites";
 import {useNavigate} from "react-router-dom"
@@ -13,7 +14,8 @@ function GameContainer({setPlayerData, token, playerData}) {
     const navigate = useNavigate()
 
 
-   
+
+
 
     console.log('game container render')
    
@@ -36,9 +38,11 @@ function GameContainer({setPlayerData, token, playerData}) {
     
 
     
+
     function handlePOSTRecord(){
        fetch(STAT_URL, fetchConfigObj('POST', playerData))
        .then(resp => {if (resp.ok) navigate("/Leaderboard")} )
+
     }
 
     
@@ -52,8 +56,10 @@ function GameContainer({setPlayerData, token, playerData}) {
             <p>Your name: {playerData.username}</p>
 
 
+
             {!gameOver? <SongQuestion token={token} setPlayerData={setPlayerData} /> : null}
             
+
         </div>
     )
 }
