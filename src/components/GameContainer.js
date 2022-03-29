@@ -16,6 +16,7 @@ function GameContainer({setPlayerData, token, playerData}) {
 
 
 
+
    
     useEffect(() => { //retrieves initial song data
        const timeID = setTimeout(() => {
@@ -51,7 +52,9 @@ function GameContainer({setPlayerData, token, playerData}) {
     return (
         <div>
             <h2>Success, You are in the game container</h2>
+
             <p>Your name: {playerData.username}</p>
+
 
 
 

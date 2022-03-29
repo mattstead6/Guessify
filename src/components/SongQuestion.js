@@ -7,6 +7,7 @@ function SongQuestion({setPlayerData, token}){
     console.log('songQuestion rerender')
 
 
+
     // question timer moved into songQuestion for bug purposes and to make it more modular
     const [correctSong ,setCorrectSong] = useState({}) 
     const [allSongs ,setAllSongs] = useState([]) 
@@ -64,6 +65,7 @@ function SongQuestion({setPlayerData, token}){
 
 
 
+
     // array of answers made up of current song and 3 random songs
     const multipleChoice = allSongs.map(song => (
     <li key={song.id} ><button onClick={e => handleAnswer(e.target.name)} name={song.name}>{song.name}</button></li> ) )
@@ -79,10 +81,12 @@ function SongQuestion({setPlayerData, token}){
            <h3>{timeRemaining} seconds left</h3>
         </>
     )
+
     else {
         return <h2>Loading...</h2>
     }
  
+
 } 
 
 export default SongQuestion
