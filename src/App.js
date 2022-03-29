@@ -1,23 +1,21 @@
 import './App.css';
-import { fetchConfigObj, STAT_URL } from './components/utilites';
-import { BrowserRouter, 
-         Routes, 
+
+import { Routes, 
          Route, 
-         Link, 
-         Outlet, 
-         useParams, 
          useNavigate } from "react-router-dom"
 import {useEffect, useState} from "react"
 import GameContainer from './components/GameContainer';
 import Leaderboard from './components/Leaderboard';
 import Home from './components/Home';
 
-         
 
+const resetPlayer = {username: "", score: 0, totalcorrect: 0, totalplayed:0}
+ 
 
 function App() {
+  const [playerData ,setPlayerData] = useState(resetPlayer) 
   const [token, setToken] = useState("")
-      //variables needed for authorization:
+      //variables needed for suthorization:
   const CLIENT_ID = "ad207e953e224110b18641630a57a298" 
   const REDIRECT_URI = "http://localhost:3000/"
   const AUTH_ENDPOINT = "https://accounts.spotify.com/authorize"
@@ -44,17 +42,10 @@ function App() {
   }
 
 
-  let params = useParams();
-
 
   // game details i.e player name as well as chosen genres and scored points need 
   // to be stateful data so that when player completes the game we can post data to leader board
-  const resetPlayer = {username: "", score: 0, totalcorrect: 0, totalplayed:0}
-  const [playerData ,setPlayerData] = useState(resetPlayer) 
 
-  function handleSubmitPlayerStats(playerData) {
-    fetch(STAT_URL, fetchConfigObj('POST', playerData))
-  }
 
   let navigate = useNavigate();
 
@@ -67,27 +58,25 @@ function App() {
   
   function handleSubmit(e){
     e.preventDefault();
-    const {target: {name}} = e
-    console.log(e.target);
-    navigate("./GameContainer", {state: {name: name.value, genre: "classical", token: token}})
+    navigate("./GameContainer")
   }
+
 
 
   return (
     <div className="App">
+
     <Routes>
       <Route path="/" element={<Home handleSubmit={handleSubmit} setPlayerData={setPlayerData} playerData={playerData}/>} />
       <Route path="GameContainer" element={<GameContainer token={token} playerData={playerData} setPlayerData={setPlayerData}/>} />
-
       <Route path="Leaderboard" element={<Leaderboard />} />
     </Routes>
 
+    {/* <Link to="/Leaderboard">Leaderboard</Link> */}
     {!token ? <a href={`${AUTH_ENDPOINT}?client_id=${CLIENT_ID}&redirect_uri=${REDIRECT_URI}&response_type=${RESPONSE_TYPE}`}>Login to Spotify</a>
     : <button onClick={logout}>logout</button>}
-    
-   <button onClick={getUserData}>get user data</button>
+   
    <button onClick={handleHomeClick} >Home</button>
-
     </div>
 
   );

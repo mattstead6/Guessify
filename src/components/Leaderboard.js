@@ -1,11 +1,12 @@
 import { useEffect, useState } from "react";
-import { Link, useLocation, useNavigate } from "react-router-dom";
-import { STAT_URL, } from "./utilites";
+import { useNavigate } from "react-router-dom";
+import { STAT_URL, useDocumentTitle, } from "./utilites";
 
 
 
 
 function Leaderboard () {
+    useDocumentTitle("GUESSIFY LEADERBOARD")
     const [scores ,setScores] = useState([]) 
 
     const navigate = useNavigate()
@@ -14,7 +15,7 @@ function Leaderboard () {
         const displayBoard = scores.map(score => (
               <tr key={score.id} >
                     <td>{score.username}</td>
-                    <td>{score.score}</td>
+                    <td>{score.score} pts</td>
               </tr>  
         ))
     

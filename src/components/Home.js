@@ -1,7 +1,8 @@
 import {useNavigate} from "react-router-dom"
+import { useDocumentTitle } from "./utilites";
 
 function Home({handleSubmit, setPlayerData, playerData }) {
-
+    useDocumentTitle("GUESSIFY HOME")
     
 
     const navigate = useNavigate();
