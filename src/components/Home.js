@@ -1,4 +1,11 @@
-import {useNavigate} from "react-router-dom"
+
+import {useNavigate} from "react-router-dom";
+import {useEffect} from "react";
+
+function Home({handleSubmit, setPlayerData, playerData, resetPlayerdata}) {
+    useEffect(() => (
+        resetPlayerdata()
+    ),[])
 
 import { useDocumentTitle } from "./utilites";
 
@@ -6,11 +13,7 @@ import { useDocumentTitle } from "./utilites";
 import "../style.css"
 import logo from "../GUESSIFY.png"
 
-function Home({handleSubmit, setPlayerData, playerData }) {
-
-
     
-
     const navigate = useNavigate();
 
     return (
@@ -54,9 +57,14 @@ function Home({handleSubmit, setPlayerData, playerData }) {
                
 
       
+
+            <button onClick={() => navigate("./Leaderboard")}
+            >Leaderboard</button>
+
             
             </section>
             
+
         </>
     )
 }

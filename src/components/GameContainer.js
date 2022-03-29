@@ -6,23 +6,27 @@ import { fetchConfigObj, STAT_URL } from "./utilites";
 import { useNavigate } from "react-router-dom"
 
 
-function GameContainer({setPlayerData, token, playerData}) {
+function GameContainer({setPlayerData, token, playerData, resetPlayerdata, correctAnswers, setCorrectAnswers}) {
 
     //full gametimer, player has 60 seconds to guess as many songs as possible
-    const [gameTimer ,setGameTimer] = useState(60) 
+    const [gameTimer ,setGameTimer] = useState(10) 
     const [gameOver ,setGameOver] = useState(false) 
     const navigate = useNavigate()
     useDocumentTitle('GUESSIFY GAME TIME')
 
+   console.log('game container render')
 
 
+    useEffect(() => (
+        resetPlayerdata()
+    ),[])
 
    
     useEffect(() => { //retrieves initial song data
        const timeID = setTimeout(() => {
         if (gameTimer > 0) {
         setGameTimer(gameTimer - 1)
-        console.log(gameTimer)
+       console.log(gameTimer)
         }
         else{
             setGameOver(true)
@@ -34,19 +38,13 @@ function GameContainer({setPlayerData, token, playerData}) {
     }, [gameTimer])
 
     
-    
-
-    
 
     function handlePOSTRecord(){
        fetch(STAT_URL, fetchConfigObj('POST', playerData))
        .then(resp => {if (resp.ok) navigate("/Leaderboard")} )
-
     }
 
-    
-
-
+ 
 
     
     return (
@@ -55,12 +53,8 @@ function GameContainer({setPlayerData, token, playerData}) {
 
             <p>Your name: {playerData.username}</p>
 
-
-
-
-            {!gameOver? <SongQuestion token={token} setPlayerData={setPlayerData} /> : null}
+            {!gameOver? <SongQuestion token={token} setPlayerData={setPlayerData} correctAnswers={correctAnswers} setCorrectAnswers={setCorrectAnswers}/> : null}
             
-
         </div>
     )
 }
