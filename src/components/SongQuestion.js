@@ -21,9 +21,10 @@ function SongQuestion({setPlayerData, token, correctAnswers, setCorrectAnswers})
          setTimeRemaining(timeRemaining - 1)
          }
          else{
-           
-           getSongs()  
-           setTimeRemaining(10)
+
+           getSongs()
+           .then(setTimeRemaining(10)) 
+           setPlayerData(prev => ({...prev, totalplayed: prev.totalplayed + 1})) 
          }
        },1000) ;
        return () => {clearTimeout(timeID)}  
@@ -33,7 +34,7 @@ function SongQuestion({setPlayerData, token, correctAnswers, setCorrectAnswers})
    
 
      function getSongs() {
-        fetch(`https://api.spotify.com/v1/search?q=%25${randomChar}%25&type=track&limit=4&offset=${Math.floor(Math.random() * 1000)}`, 
+       return fetch(`https://api.spotify.com/v1/search?q=%25${randomChar}%25&type=track&limit=4&offset=${Math.floor(Math.random() * 1000)}`, 
         {
             method: 'GET',
             headers: {
@@ -45,10 +46,11 @@ function SongQuestion({setPlayerData, token, correctAnswers, setCorrectAnswers})
         }
         
         function handleSongBatch(songs) {
-            setCorrectSong(songs.find(song => song.preview_url))
-            setAllSongs(songs)    
-            setCorrectAnswers((prev) => [...prev, correctSong])     
-    }
+
+            setCorrectSong(() => songs.find(song => song.preview_url))
+            setAllSongs(songs.sort((a, b) => 0.5 - Math.random()))
+            setCorrectAnswers((prev) => [...prev, correctSong])
+        }
 
 
 

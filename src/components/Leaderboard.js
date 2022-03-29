@@ -1,11 +1,18 @@
 import { useEffect, useState } from "react";
-import { Link, useLocation, useNavigate } from "react-router-dom";
-import { STAT_URL, } from "./utilites";
+
+import { useNavigate } from "react-router-dom";
+import { STAT_URL, useDocumentTitle, } from "./utilites";
+
 import GameOver from "./GameOver";
+
 
 
 function Leaderboard ({playerData, correctAnswers}) {
     const [scores, setScores] = useState([]) 
+    useDocumentTitle("GUESSIFY LEADERBOARD")
+     
+
+
     const navigate = useNavigate()
     console.log(correctAnswers)
 
