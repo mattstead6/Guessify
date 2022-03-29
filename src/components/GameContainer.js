@@ -17,6 +17,7 @@ function GameContainer({setPlayerData, token, playerData}) {
 
 
 
+
     console.log('game container render')
    
     useEffect(() => { //retrieves initial song data
@@ -53,7 +54,9 @@ function GameContainer({setPlayerData, token, playerData}) {
     return (
         <div>
             <h2>Success, You are in the game container</h2>
+
             <p>Your name: {playerData.username}</p>
+
 
 
 

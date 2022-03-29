@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { STAT_URL, } from "./utilites";
+import GameOver from "./GameOver";
 
 
 
@@ -27,6 +28,8 @@ function Leaderboard () {
 
     return (
         <div>
+
+        <GameOver/>
         <h3>Leaderboard</h3>
             <table>
                 <thead>
