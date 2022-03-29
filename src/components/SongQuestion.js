@@ -9,6 +9,8 @@ import React from "react";
 
 function SongQuestion({ correctSong, allSongs, handleAnswer }){
     console.log('songQuestion rerender')
+
+
     // array of answers made up of current song and 3 random songs
     const multipleChoice = allSongs.map(song => (
     <li key={song.id} ><button onClick={e => handleAnswer(e.target.name)} name={song.name}>{song.name}</button></li> ) )
@@ -22,7 +24,6 @@ function SongQuestion({ correctSong, allSongs, handleAnswer }){
            </ul>
         </>
     )
- 
 } 
 
 export default SongQuestion

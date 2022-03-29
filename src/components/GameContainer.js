@@ -1,16 +1,12 @@
 
 import { useState, useEffect } from "react";
-
-import { useLocation, useParams} from "react-router-dom";
-
 import SongQuestion from "./SongQuestion";
 
 
 
 
-function GameContainer({setPlayerData}) {
+function GameContainer({setPlayerData, token}) {
 
-    const location = useLocation();
 
     const [correctSong ,setCorrectSong] = useState({}) 
     const [allSongs ,setAllSongs] = useState([]) 
@@ -83,7 +79,7 @@ function GameContainer({setPlayerData}) {
     return (
         <div>
             <h2>Success, You are in the game container</h2>
-            <p>Your name: {location.state.name}</p>
+            <p>Your name: {""}</p>
 
 
 
