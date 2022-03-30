@@ -70,7 +70,7 @@ function SongQuestion({setPlayerData, token, correctAnswers, setCorrectAnswers})
      if (correctSong) return (
         <>
         <h2>Guess the name of this song..</h2>
-         <iframe src={correctSong.preview_url} title='song' allow="autoplay"></iframe>
+         <iframe src={correctSong.preview_url} title={correctSong.name} allow="autoplay"></iframe>
 
            <ul>
           {multipleChoice}
