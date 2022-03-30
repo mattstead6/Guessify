@@ -5,6 +5,8 @@ import GameOver from "./GameOver";
 import AnswerList from "./AnswerList";
 
 
+
+
 function Leaderboard ({playerData, correctAnswers, setCorrectAnswers}) {
     const [scores, setScores] = useState([]) 
     const navigate = useNavigate()
@@ -39,8 +41,8 @@ function Leaderboard ({playerData, correctAnswers, setCorrectAnswers}) {
     console.log(scores)
     return (
         <div>  
-       {playerData.totalplayed !== 0 ? <GameOver playerData={playerData}/> : null}
-        <h3>Leaderboard</h3>
+       {playerData.totalplayed !== 0 ? <GameOver scores={scores} playerData={playerData}/> : null}
+       <img style={{maxWidth: playerData.totalplayed === 0? '40%':'30%'}} src='/images/leaderboard.png' alt='Leaderboard'/>
             <ol>
             <table className="leaderboard-table">
                 <thead>
@@ -56,8 +58,10 @@ function Leaderboard ({playerData, correctAnswers, setCorrectAnswers}) {
                 </tbody>
             </table>
             </ol>
+
             <AnswerList correctAnswers={editedAnswers} />
-            <button onClick={()=> navigate("/")}>Play Again?</button>
+             <button onClick={()=> navigate("/")}>{playerData.totalplayed === 0 ? <b>Play Game</b> : <b>Play Again</b>}</button>
+
         </div>
     )
 }

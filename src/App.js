@@ -45,19 +45,17 @@ function App() {
     window.localStorage.removeItem("token")
   }
 
-  // game details i.e player name as well as chosen genres and scored points need 
-  // to be stateful data so that when player completes the game we can post data to leader board
-  
-
-//   function handleHomeClick() {
-//     navigate("./")
-//     setPlayerData({username: "", score: 0, totalcorrect: 0, totalplayed:0})
-// }
   
   function handleSubmit(e){
+    if (token) {
     e.preventDefault();
     playerData.username === ""? alert("Please enter a name!") :
     navigate("./GameContainer")
+    }
+    else{
+      alert('Please login to your spotify below')
+    }
+
   }
 
   function resetPlayerData() {
@@ -82,8 +80,8 @@ function App() {
       <Route path="Leaderboard" element={<Leaderboard playerData={playerData} correctAnswers={correctAnswers} setCorrectAnswers={setCorrectAnswers}/>} />
     </Routes>
 
-    {!token ? <a href={`${AUTH_ENDPOINT}?client_id=${CLIENT_ID}&redirect_uri=${REDIRECT_URI}&response_type=${RESPONSE_TYPE}`}>Login to Spotify</a>
-    : <button onClick={logout}>logout</button>}
+    {!token ? <a id='login-button' href={`${AUTH_ENDPOINT}?client_id=${CLIENT_ID}&redirect_uri=${REDIRECT_URI}&response_type=${RESPONSE_TYPE}`}><b>Login to Spotify</b></a>
+    : <button onClick={logout}><b>Logout</b></button>}
     
     </div>
 

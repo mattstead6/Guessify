@@ -3,31 +3,17 @@
     {
       "id": 1,
       "username": "John Doe",
-      "score": 25
+      "score": 5
     },
     {
       "id": 2,
       "username": "Jane Doe",
-      "score": 30
+      "score": 5
     },
     {
       "id": 3,
       "username": "Joe Davola",
       "score": 0
-    },
-    {
-      "username": "Daniel Brito",
-      "score": 65,
-      "totalcorrect": 13,
-      "totalplayed": 14,
-      "id": 4
-    },
-    {
-      "username": "lil wayne",
-      "score": 30,
-      "totalcorrect": 6,
-      "totalplayed": 10,
-      "id": 5
     },
     {
       "username": "Jay Z",
@@ -38,97 +24,55 @@
     },
     {
       "username": "Will Smith",
-      "score": 30,
+      "score": 10,
       "totalcorrect": 6,
       "totalplayed": 8,
       "id": 7
     },
     {
-      "username": "Daniel Brito",
-      "score": 40,
-      "totalcorrect": 8,
-      "totalplayed": 30,
-      "id": 8
-    },
-    {
       "username": "FATMANSCOoP",
-      "score": 20,
+      "score": 5,
       "totalcorrect": 4,
       "totalplayed": 9,
       "id": 9
     },
     {
-      "username": "Dwayne theRock Johnson",
-      "score": 35,
-      "totalcorrect": 7,
-      "totalplayed": 7,
-      "id": 10
-    },
-    {
-      "username": "Paul Revere",
-      "score": 30,
-      "totalcorrect": 6,
-      "totalplayed": 10,
-      "id": 11
-    },
-    {
-      "username": "Ben Tenisson",
-      "score": 30,
-      "totalcorrect": 6,
-      "totalplayed": 10,
-      "id": 12
-    },
-    {
       "username": "Leonardo D'vinci",
-      "score": 15,
+      "score": 5,
       "totalcorrect": 3,
       "totalplayed": 11,
       "id": 13
     },
     {
       "username": "Vegeta",
-      "score": 25,
+      "score": 10,
       "totalcorrect": 5,
       "totalplayed": 10,
       "id": 14
     },
     {
       "username": "person",
-      "score": 25,
+      "score": 5,
       "totalcorrect": 5,
       "totalplayed": 19,
       "id": 15
     },
     {
-      "username": "",
-      "score": 20,
-      "totalcorrect": 4,
-      "totalplayed": 14,
-      "id": 16
+      "username": "jackie chan",
+      "score": 5,
+      "totalcorrect": 6,
+      "totalplayed": 13,
+      "id": 22
     },
     {
-      "username": "",
-      "score": 10,
-      "totalcorrect": 2,
+      "username": "George Lopez",
+      "score": 5,
+      "totalcorrect": 3,
       "totalplayed": 3,
-      "id": 17
+      "id": 23
     },
     {
-      "username": "",
-      "score": 10,
-      "totalcorrect": 2,
-      "totalplayed": 6,
-      "id": 18
-    },
-    {
-      "username": "",
-      "score": 10,
-      "totalcorrect": 2,
-      "totalplayed": 10,
-      "id": 19
-    },
-    {
-      "username": "",
+      "username": "Barack Obama",
       "score": 5,
       "totalcorrect": 1,
       "totalplayed": 8,

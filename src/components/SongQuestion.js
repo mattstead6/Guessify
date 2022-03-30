@@ -65,14 +65,14 @@ function SongQuestion({setPlayerData, token, correctAnswers, setCorrectAnswers})
 
     // array of answers made up of current song and 3 random songs
     const multipleChoice = allSongs.map(song => (
-    <li key={song.id} ><button onClick={e => handleAnswer(e.target.name)} name={song.name}>{song.name}</button></li> ) )
+    <li style={{listStyleType: "none"}} key={song.id} ><button onClick={e => handleAnswer(e.target.name)} name={song.name}><b>{song.name}</b></button></li> ) )
 
      if (correctSong) return (
         <>
         <h2>Guess the name of this song..</h2>
          <iframe src={correctSong.preview_url} title={correctSong.name} allow="autoplay"></iframe>
 
-           <ul>
+           <ul style={{padding: '0'}} >
           {multipleChoice}
            </ul>
            <h3>{timeRemaining} seconds left</h3>

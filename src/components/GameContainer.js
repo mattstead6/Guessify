@@ -39,7 +39,7 @@ function GameContainer({setPlayerData, token, playerData, resetPlayerData, corre
     
 
     function handlePOSTRecord(){
-       fetch(STAT_URL, fetchConfigObj('POST', playerData))
+       fetch(STAT_URL, fetchConfigObj('POST', {...playerData, score: playerData.totalcorrect * 5}))
        .then(resp => {if (resp.ok) navigate("/Leaderboard")} )
     }
 
@@ -48,7 +48,7 @@ function GameContainer({setPlayerData, token, playerData, resetPlayerData, corre
     
     return (
         <div>
-            <h2>Success, You are in the game container</h2>
+            <img style={{maxWidth:'30%'}} src='/images/guess this song.png' alt='Guess this song' />
 
             <p>Your name: {playerData.username}</p>
 
