@@ -1,15 +1,37 @@
 
 
-function GameOver({playerData}) {
+function GameOver({playerData, scores}) {
+
+    // below 2 functions finds position on leaderboard based on matching details
+
+    function suffixMe(num) {
+        const j = num % 10,
+          k = num % 100;
+        if (j == 1 && k != 11) {
+          return `${num}st`;
+        } else if (j == 2 && k != 12) {
+          return `${num}nd`;
+        } else if (j == 3 && k != 13) {
+          return `${num}rd`;
+        } else {
+          return `${num}th`;
+        }
+      }
+        
+    function findPlayerPosition(player) {
+        const num = scores.indexOf(scores.find(score => player.username === score.username && player.score === score.score && player.totalcorrect === score.totalcorrect)) + 1
+        return suffixMe(num)
+    }
 
     return (
         <>
-        <h2>Game Over</h2>
-        <h4>Final Score: {playerData.score} Points </h4>
-        <p>You knew {playerData.totalcorrect} out of {playerData.totalplayed} (attempted) songs!</p>
-        <p>And you placed {"leaderboardPosition"}th on the Leaderboard!</p>
+        <img style={{maxWidth:'30%'}} src='/images/game over.png' />
+        <h4>Final Score: <b>{playerData.score} Points</b> </h4>
+        <p>You knew <b>{playerData.totalcorrect}</b> out of <b>{playerData.totalplayed}</b> (attempted) songs!</p>
+        <p>And you placed <b>{findPlayerPosition(playerData)}</b> on the Leaderboard!</p>
         </>
     )
 }
 
 export default GameOver
+

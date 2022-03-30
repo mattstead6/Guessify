@@ -11,17 +11,21 @@ function Home({handleSubmit, setPlayerData, playerData, resetPlayerData}) {
         resetPlayerData()
     ),[])
 
+    // function handleStartGame(e) {
+    //     if (pplayerData.username)
+    // }
+
     const navigate = useNavigate();
 
     return (
         <> 
-            <h2>Welcome to "Guess the Song Name" (title pending...)</h2>
+           <img style={{maxWidth: '30%'}} src={logo} alt='Guessify logo'/>
+            <h2>do you know your shit?...</h2>
             <form onSubmit={handleSubmit}>
-                <label for="name">Name: </label>
                 <input onChange={e => setPlayerData(prev => ({...prev, username: e.target.value }))} type="text" id="name" name="name" placeholder='Your name here...' value={playerData.username}></input>
-                <button type="submit">Start the game!</button>
+                <button type="submit"><b>Start Game</b></button>
             </form>       
-            <button onClick={() => navigate("./Leaderboard")}>Leaderboard</button>
+            <button onClick={() => navigate("./Leaderboard")}><b>Leaderboard</b></button>
         </>
     )
 }
