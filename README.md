@@ -23,6 +23,8 @@ To-dos:
 - CSS stylings
   . - persist correct song data in db.json
 - end of game flow
+- diplay list of correct answers on quiz completionn
+  . - add links to preview, open in spotify
 
 Bugs:
 
