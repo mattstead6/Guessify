@@ -18,7 +18,6 @@ function GameContainer({setPlayerData, token, playerData, resetPlayerData, corre
 
 
     useEffect(() => {
-        resetPlayerData();
         setCorrectAnswers([]);
     },[])
    

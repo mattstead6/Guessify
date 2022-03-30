@@ -1,7 +1,6 @@
 import {useNavigate} from "react-router-dom";
 import {useEffect} from "react";
 import { useDocumentTitle } from "./utilites";
-import "../style.css";
 import logo from "../GUESSIFY.png";
 
 

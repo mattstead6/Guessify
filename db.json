@@ -135,102 +135,67 @@
       "id": 20
     },
     {
-      "username": "",
+      "username": "raa",
       "score": 0,
       "totalcorrect": 0,
-      "totalplayed": 8,
+      "totalplayed": 0,
       "id": 21
     },
     {
-      "username": "",
-      "score": 5,
-      "totalcorrect": 1,
-      "totalplayed": 3,
+      "username": "Yogurt",
+      "score": 0,
+      "totalcorrect": 0,
+      "totalplayed": 0,
       "id": 22
     },
     {
-      "username": "",
-      "score": 10,
-      "totalcorrect": 2,
-      "totalplayed": 3,
+      "username": "lettuce",
+      "score": 0,
+      "totalcorrect": 0,
+      "totalplayed": 2,
       "id": 23
     },
     {
-      "username": "",
+      "username": "raa",
       "score": 0,
       "totalcorrect": 0,
-      "totalplayed": 7,
+      "totalplayed": 0,
       "id": 24
     },
     {
-      "username": "",
-      "score": 15,
-      "totalcorrect": 3,
-      "totalplayed": 7,
-      "id": 25
-    },
-    {
-      "username": "",
-      "score": 25,
-      "totalcorrect": 5,
-      "totalplayed": 9,
-      "id": 26
-    },
-    {
-      "username": "",
-      "score": 10,
-      "totalcorrect": 2,
-      "totalplayed": 8,
-      "id": 27
-    },
-    {
-      "username": "",
-      "score": 5,
-      "totalcorrect": 1,
-      "totalplayed": 3,
-      "id": 28
-    },
-    {
-      "username": "",
-      "score": 15,
-      "totalcorrect": 3,
-      "totalplayed": 6,
-      "id": 29
-    },
-    {
-      "username": "",
+      "username": "Yogurt",
       "score": 5,
       "totalcorrect": 1,
       "totalplayed": 5,
-      "id": 30
+      "id": 25
     },
     {
-      "username": "",
-      "score": 0,
-      "totalcorrect": 0,
-      "totalplayed": 0,
-      "id": 31
+      "username": "Yogurt",
+      "score": 25,
+      "totalcorrect": 5,
+      "totalplayed": 22,
+      "id": 26
     },
     {
-      "username": "",
-      "score": 15,
-      "totalcorrect": 3,
-      "totalplayed": 6,
-      "id": 32
+      "username": "Yogurt",
+      "score": 50,
+      "totalcorrect": 10,
+      "totalplayed": 27,
+      "id": 27
     },
     {
-      "username": "",
-      "score": 10,
-      "totalcorrect": 2,
-      "totalplayed": 10,
-      "id": 33
+      "username": "lettuce",
+      "score": 5,
+      "totalcorrect": 1,
+      "totalplayed": 5,
+      "id": 28
     },
     {
-      "username": "",
-      "score": 0,
-      "totalcorrect": 0,
-      "totalplayed": 0,
-      "id": 34
+      "username": "Yogurt",
+      "score": 45,
+      "totalcorrect": 9,
+      "totalplayed": 17,
+      "id": 29
     }
   ]
 }
