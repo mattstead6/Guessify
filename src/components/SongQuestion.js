@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
-
+import {useNavigate} from "react-router-dom";
 
 
 function SongQuestion({setPlayerData, token, correctAnswers, setCorrectAnswers}){
@@ -10,6 +9,7 @@ function SongQuestion({setPlayerData, token, correctAnswers, setCorrectAnswers})
     // question timer moved into songQuestion for bug purposes and to make it more modular
     const [correctSong ,setCorrectSong] = useState({}) 
     const [allSongs ,setAllSongs] = useState([]) 
+    
     const [timeRemaining, setTimeRemaining] = useState(10);
     const alphabet = "abcdefghijklmnopqrstuvwxyz"
     let randomChar = alphabet.charAt(Math.floor(Math.random() * alphabet.length))
@@ -21,7 +21,6 @@ function SongQuestion({setPlayerData, token, correctAnswers, setCorrectAnswers})
          setTimeRemaining(timeRemaining - 1)
          }
          else{
-
            getSongs()
            .then(setTimeRemaining(10)) 
            setPlayerData(prev => ({...prev, totalplayed: prev.totalplayed + 1})) 
@@ -32,7 +31,6 @@ function SongQuestion({setPlayerData, token, correctAnswers, setCorrectAnswers})
      }, [timeRemaining])
  
    
-
      function getSongs() {
        return fetch(`https://api.spotify.com/v1/search?q=%25${randomChar}%25&type=track&limit=4&offset=${Math.floor(Math.random() * 1000)}`, 
         {
@@ -53,7 +51,6 @@ function SongQuestion({setPlayerData, token, correctAnswers, setCorrectAnswers})
         }
 
 
-
     function handleAnswer(answer) {
         getSongs()
         setTimeRemaining(10)
@@ -64,9 +61,6 @@ function SongQuestion({setPlayerData, token, correctAnswers, setCorrectAnswers})
             setPlayerData(prev => ({...prev, totalplayed: prev.totalplayed + 1}))
         }
     }
-
-
-
 
 
     // array of answers made up of current song and 3 random songs
@@ -88,8 +82,6 @@ function SongQuestion({setPlayerData, token, correctAnswers, setCorrectAnswers})
     else {
         return <h2>Loading...</h2>
     }
- 
-
 } 
 
 export default SongQuestion

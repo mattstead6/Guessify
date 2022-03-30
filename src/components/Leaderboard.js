@@ -1,21 +1,15 @@
 import { useEffect, useState } from "react";
-
 import { useNavigate } from "react-router-dom";
 import { STAT_URL, useDocumentTitle, } from "./utilites";
-
 import GameOver from "./GameOver";
 
 
-
-function Leaderboard ({playerData, correctAnswers}) {
+function Leaderboard ({playerData, correctAnswers, setCorrectAnswers}) {
     const [scores, setScores] = useState([]) 
-    useDocumentTitle("GUESSIFY LEADERBOARD")
-     
-
-
     const navigate = useNavigate()
+    useDocumentTitle("GUESSIFY LEADERBOARD")
+    
     console.log(correctAnswers)
-
     console.log(playerData)
     
     useEffect(()=> {
@@ -32,6 +26,14 @@ function Leaderboard ({playerData, correctAnswers}) {
         })
     },[])
 
+    useEffect(() => {
+        if (correctAnswers[0] === {}){
+            const editedAnswers = correctAnswers.slice(1);
+            setCorrectAnswers(editedAnswers)
+        }
+    
+    },[])
+
     const displayBoard = scores.map(score => (
         <tr key={score.id} >
             <td><li>{score.username}</li></td>
@@ -41,22 +43,23 @@ function Leaderboard ({playerData, correctAnswers}) {
 
 
      function displayCorrectAnswers() {
-
-        const editedAnswers = 
-        correctAnswers.map(answer => {
+         
+       const editedAnswers = correctAnswers.slice(1);
+        editedAnswers.map(answer => {
             console.log(answer)
-            if (answer.name === undefined)
-                return null
-            else  {
+            if (!!answer.name)
                 return (
                     <li>
                         <b>Name: </b>{answer.name}, <b>artist: </b>{answer.artists.name}, 
-                        <a
+                        {/* <a
                         className="spotify-link"
-                        href={"https://open.spotify.com/track/" + answer.id}>open in spotify</a>
+                        href={"https://open.spotify.com/track/" + answer.id}>open in spotify</a> */}
                     </li>               
-                 )}
-        })
+                 )
+                else
+                    return null;
+            }
+        )
        
     }
 
@@ -83,9 +86,9 @@ function Leaderboard ({playerData, correctAnswers}) {
             </ol>
             <ul>
                 <li>Song List: </li>
-                {displayCorrectAnswers()}
+                {() =>displayCorrectAnswers}
             </ul>
-            <button onClick={()=> navigate("../GameContainer")}>Play Again?</button>
+            <button onClick={()=> navigate("/")}>Play Again?</button>
         </div>
     )
 }
