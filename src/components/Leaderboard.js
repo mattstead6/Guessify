@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { STAT_URL, useDocumentTitle, } from "./utilites";
 import GameOver from "./GameOver";
+import AnswerList from "./AnswerList";
 
 
 
@@ -10,7 +11,7 @@ function Leaderboard ({playerData, correctAnswers, setCorrectAnswers}) {
     const [scores, setScores] = useState([]) 
     const navigate = useNavigate()
     useDocumentTitle("GUESSIFY LEADERBOARD")
-    
+    let editedAnswers = correctAnswers.slice(1);
     console.log(correctAnswers)
     console.log(playerData)
     
@@ -28,13 +29,7 @@ function Leaderboard ({playerData, correctAnswers, setCorrectAnswers}) {
         })
     },[])
 
-    useEffect(() => {
-        if (correctAnswers[0] === {}){
-            const editedAnswers = correctAnswers.slice(1);
-            setCorrectAnswers(editedAnswers)
-        }
     
-    },[])
 
     const displayBoard = scores.map(score => (
         <tr key={score.id} >
@@ -42,29 +37,6 @@ function Leaderboard ({playerData, correctAnswers, setCorrectAnswers}) {
             <td>{score.score}</td>
         </tr>  
     ))
-
-
-     function displayCorrectAnswers() {
-         
-       const editedAnswers = correctAnswers.slice(1);
-        editedAnswers.map(answer => {
-            console.log(answer)
-            if (!!answer.name)
-                return (
-                    <li>
-                        <b>Name: </b>{answer.name}, <b>artist: </b>{answer.artists.name}, 
-                        {/* <a
-                        className="spotify-link"
-                        href={"https://open.spotify.com/track/" + answer.id}>open in spotify</a> */}
-                    </li>               
-                 )
-                else
-                    return null;
-            }
-        )
-       
-    }
-
 
     console.log(scores)
     return (
@@ -86,11 +58,10 @@ function Leaderboard ({playerData, correctAnswers, setCorrectAnswers}) {
                 </tbody>
             </table>
             </ol>
-            <ul>
-                <li>Song List: </li>
-                {() =>displayCorrectAnswers}
-            </ul>
-            <button onClick={()=> navigate("/")}>{playerData.totalplayed === 0 ? <b>Play Game</b> : <b>Play Again</b>}</button>
+
+            <AnswerList correctAnswers={editedAnswers} />
+             <button onClick={()=> navigate("/")}>{playerData.totalplayed === 0 ? <b>Play Game</b> : <b>Play Again</b>}</button>
+
         </div>
     )
 }
