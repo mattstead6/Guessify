@@ -2,15 +2,13 @@ import React, { useEffect, useState } from "react";
 import {useNavigate} from "react-router-dom";
 
 
-function SongQuestion({setPlayerData, token, correctAnswers, setCorrectAnswers}){
-
-    console.log('songQuestion rerender')
+function SongQuestion({setPlayerData, token, setCorrectAnswers}){
 
     // question timer moved into songQuestion for bug purposes and to make it more modular
-    const [correctSong ,setCorrectSong] = useState({}) 
-    const [allSongs ,setAllSongs] = useState([]) 
+    const [correctSong, setCorrectSong] = useState({}) 
+    const [allSongs, setAllSongs] = useState([]) 
     
-    const [timeRemaining, setTimeRemaining] = useState(10);
+    const [timeRemaining, setTimeRemaining] = useState(60);
     const alphabet = "abcdefghijklmnopqrstuvwxyz"
     let randomChar = alphabet.charAt(Math.floor(Math.random() * alphabet.length))
 
@@ -52,9 +50,12 @@ function SongQuestion({setPlayerData, token, correctAnswers, setCorrectAnswers})
 
 
     function handleAnswer(answer) {
+        console.log("array of all options: ",allSongs)
+        console.log("clicked answer: ", answer.target.name)
+        console.log("correct song state variable: ",correctSong.name)
         getSongs()
         setTimeRemaining(10)
-        if (answer === correctSong.name){
+        if (answer.target.name === correctSong.name){
             setPlayerData(prev => ({...prev, score: prev.score + 5,totalcorrect: prev.totalcorrect + 1,totalplayed: prev.totalplayed + 1}))
         }
         else{
@@ -65,7 +66,7 @@ function SongQuestion({setPlayerData, token, correctAnswers, setCorrectAnswers})
 
     // array of answers made up of current song and 3 random songs
     const multipleChoice = allSongs.map(song => (
-    <li style={{listStyleType: "none"}} key={song.id} ><button onClick={e => handleAnswer(e.target.name)} name={song.name}><b>{song.name}</b></button></li> ) )
+    <li style={{listStyleType: "none"}} key={song.id} ><button onClick={e => handleAnswer(e)} name={song.name}><b>{song.name}</b></button></li> ) )
 
      if (correctSong) return (
         <>
