@@ -23,46 +23,96 @@
       "id": 4
     },
     {
-      "username": "Will Smith",
-      "score": 10,
-      "totalcorrect": 6,
-      "totalplayed": 8,
-      "id": 5
-    },
-    {
-      "username": "FATMANSCOoP",
-      "score": 5,
-      "totalcorrect": 4,
-      "totalplayed": 9,
-      "id": 6
-    },
-    {
-      "username": "lettuce",
-      "score": 15,
-      "totalcorrect": 3,
-      "totalplayed": 19,
+
+      "username": "Duckleberry Finn",
+      "score": 70,
+      "totalcorrect": 14,
+      "totalplayed": 14,
       "id": 7
     },
     {
-      "username": "Yogurt",
-      "score": 5,
-      "totalcorrect": 1,
-      "totalplayed": 3,
+      "username": "Bart ",
+      "score": 95,
+      "totalcorrect": 19,
+      "totalplayed": 19,
       "id": 8
     },
     {
-      "username": "raa",
-      "score": 10,
-      "totalcorrect": 2,
-      "totalplayed": 17,
+      "username": "fake name",
+      "score": 30,
+      "totalcorrect": 6,
+      "totalplayed": 9,
       "id": 9
     },
     {
-      "username": "lettuce",
-      "score": 30,
-      "totalcorrect": 6,
-      "totalplayed": 42,
+      "username": "My Dog",
+      "score": 95,
+      "totalcorrect": 19,
+      "totalplayed": 19,
       "id": 10
+    },
+    {
+      "username": "Static Shock",
+      "score": 90,
+      "totalcorrect": 18,
+      "totalplayed": 18,
+      "id": 11
+    },
+    {
+      "username": "bobo",
+      "score": 95,
+      "totalcorrect": 19,
+      "totalplayed": 19,
+      "id": 12
+    },
+    {
+      "username": "Daniel Brito",
+      "score": 100,
+      "totalcorrect": 20,
+      "totalplayed": 20,
+      "id": 13
+    },
+    {
+      "username": "Goku",
+      "score": 75,
+      "totalcorrect": 15,
+      "totalplayed": 15,
+      "id": 14
+    },
+    {
+      "username": "Chett Tiller",
+      "score": 40,
+      "totalcorrect": 8,
+      "totalplayed": 11,
+      "id": 15
+    },
+    {
+      "username": "George Lopez",
+      "score": 40,
+      "totalcorrect": 8,
+      "totalplayed": 9,
+      "id": 16
+    },
+    {
+      "username": "the daniel plant",
+      "score": 20,
+      "totalcorrect": 4,
+      "totalplayed": 7,
+      "id": 17
+    },
+    {
+      "username": "Spicy Ramen",
+      "score": 80,
+      "totalcorrect": 16,
+      "totalplayed": 16,
+      "id": 18
+    },
+    {
+      "username": "Drake",
+      "score": 35,
+      "totalcorrect": 7,
+      "totalplayed": 8,
+      "id": 19
     }
   ]
 }

@@ -37,6 +37,10 @@ section h2 {
   letter-spacing: 10px;
 }
 
+hard {
+  color:aqua;
+}
+
 .name {
   font-family: "Nova Flat";
 }
@@ -52,23 +56,59 @@ section h2 {
   box-sizing: border-box;
 }
 
-section {
-  position: relative;
-  width: 100%;
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  background: #001300;
-  animation: changeColor 5s linear infinite;
+*
+{
+    margin:0;
+    padding:0;
+    box-sizing: border-box;
 }
-section h2 {
-  color: red;
-  font-family: "Nova Flat";
-  font-weight: 300;
-  letter-spacing: 10px;
+
+section
+{
+    position:relative;
+    width: 100%;
+    height:100vh;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background: #001300;
+    animation: changeColor 5s linear infinite
+
 }
+section h2 
+{
+color: red;
+font-family: "Nova Flat";
+font-weight: 300;
+Letter-spacing: 10px
+}
+
+.name 
+{
+    font-family: "Nova Flat";
+}
+
+
+.image
+{
+height: 30%;
+width: 40%;
+}
+
+@keyframes changeColor
+{
+    0%
+    {
+        filter: hue-rotate(0deg);
+    }
+    100%
+    {
+        filter: hue-rotate(360deg);
+    }
+}
+
+
 
 .name {
   font-family: "Nova Flat";
@@ -309,9 +349,32 @@ input:placeholder-shown + .form__label {
     padding: 12px 42px;
   }
 }
+.game-over-info {
+  border: 5px solid;
+  max-width: 50%;
+  max-height: 400px;
+  margin:auto;
+  overflow: scroll;
+  border-radius: 12px;
+  border-color: #00ff0a;
+}
 
-#login-button:hover {
-  filter: brightness(110%);
+.game-over-info a {
+  color: #ff00ff;
+  text-decoration: none;
+}
+.answer-list {
+  padding: 0;
+  list-style-type: none;
+}
+
+.song-details{
+  color: #bbf5bb;
+}
+
+#lb {
+  text-align: center;
+  margin: auto;
 }
 
 #login-button:hover {
@@ -319,55 +382,114 @@ input:placeholder-shown + .form__label {
   transition: transform 250ms cubic-bezier(0.3, 0.7, 0.4, 1.5);
 }
 
-#login-button:active {
+
+
+.normal {
+  position: relative;
+  text-decoration: none;
+  border: none;
+  background: transparent;
+  padding: 0;
+  cursor: pointer;
+  outline-offset: 4px;
+  transition: filter 250ms;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+.normal {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 12px;
+  background: hsl(0deg 0% 0% / 0.25);
+  will-change: transform;
+  transform: translateY(2px);
+  transition:
+    transform
+    600ms
+    cubic-bezier(.3, .7, .4, 1);
+}
+
+.normal {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 12px;
+  background: linear-gradient(
+    to left,
+    hsla(0, 100%, 19%, 1),
+    hsla(0, 100%, 54%, 1),
+    hsla(0, 100%, 54%, 1),
+    hsla(0, 100%, 19%, 1)
+  );
+}
+
+.normal {
+  display: block;
+  position: relative;
+  padding: 12px 27px;
+  border-radius: 12px;
+  font-size: 1.1rem;
+  color: hsla(0, 100%, 19%, 1);
+  background: rgb(20, 200, 255);
+  will-change: transform;
+  transform: translateY(-4px);
+  transition:
+    transform
+    600ms
+    cubic-bezier(.3, .7, .4, 1);
+}
+
+@media (min-width: 768px) {
+  .normal {
+    font-size: 1.25rem;
+    padding: 12px 42px;
+  }
+}
+
+.normal:hover {
+  filter: brightness(110%);
+}
+
+.normal:hover {
+  transform: translateY(-6px);
+  transition:
+    transform
+    250ms
+    cubic-bezier(.3, .7, .4, 1.5);
+}
+
+.normal:active {
   transform: translateY(-2px);
   transition: transform 34ms;
 }
 
-#login-button:hover {
+.normal:hover {
   transform: translateY(4px);
-  transition: transform 250ms cubic-bezier(0.3, 0.7, 0.4, 1.5);
+  transition:
+    transform
+    250ms
+    cubic-bezier(.3, .7, .4, 1.5);
 }
 
-#login-button:active {
+.normal:active {
   transform: translateY(1px);
   transition: transform 34ms;
 }
 
-#login-button:focus:not(:focus-visible) {
+.normal:focus:not(:focus-visible) {
   outline: none;
 }
 
-#login-button {
-  margin-top: 1em;
-  max-width: 50%;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.player-data-container {
-  border: 5px solid;
-  max-width: 30%;
-  margin: auto;
-  overflow: scroll;
-  border-radius: 12px;
-  border-color: #00ff0a;
-}
-
-.answer-list-container {
-  border: 5px solid;
-  border-color: #00ff0a;
-  border-radius: 12px;
-  max-width: 50%;
-  float: right;
-}
-
-.answer-list {
-  list-style-type: none;
-  text-align: left;
-}
-
-.answer {
-  padding-left: 1.5em;
-  text-indent: -1.5em;
+.normal {
+    margin-top: 1em;
+    max-width: 50%;
+    margin-left: auto;
+    margin-right: auto;
 }

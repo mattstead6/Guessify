@@ -1,12 +1,15 @@
 import {useNavigate} from "react-router-dom";
 import {useEffect} from "react";
 import { useDocumentTitle } from "./utilites";
-import logo from "../GUESSIFY.png";
 
 
-function Home({handleSubmit, setPlayerData, playerData, resetPlayerData}) {
+
+
+
+function Home({handleSubmit, setPlayerData, playerData, resetPlayerData, toggleIsHard, isHard}) {
     useDocumentTitle("GUESSIFY HOME")
     useEffect(() => (
+        setPlayerData(prev => isHard? {...prev, mode: "Hard"} : {...prev, mode: "Normal"}),
         resetPlayerData()
     ),[])
 
@@ -16,15 +19,31 @@ function Home({handleSubmit, setPlayerData, playerData, resetPlayerData}) {
 
     const navigate = useNavigate();
 
+
+
+
+// function openShit() {
+//    window.open("");
+// }
+
     return (
         <> 
+
+      
+                <button>Instructions</button>
+                
+           
            <img style={{maxWidth: '30%'}} src={logo} alt='Guessify logo'/>
-            <h2>do you know your shit?...</h2>
+            <h2>Play Now</h2>
+
             <form onSubmit={handleSubmit}>
                 <input onChange={e => setPlayerData(prev => ({...prev, username: e.target.value }))} type="text" id="name" name="name" placeholder='Your name here...' value={playerData.username}></input>
                 <button type="submit"><b>Start Game</b></button>
             </form>       
             <button onClick={() => navigate("./Leaderboard")}><b>Leaderboard</b></button>
+            {isHard ? <button className="normal" onClick={toggleIsHard}>Normal Mode</button>
+            :
+            <button className= "hard" onClick={toggleIsHard}>Hard Mode</button>}
         </>
     )
 }

@@ -17,23 +17,23 @@ function GameOver({playerData, scores}) {
           return `${num}th`;
         }
       }
+
         
     function findPlayerPosition(player) {
-        const num = scores.indexOf(scores.find(score => player.username === score.username && player.score === score.score && player.totalcorrect === score.totalcorrect)) + 1;
-        setPlace(num);
+        
+        const num = scores.indexOf(scores.find(score => player.username === score.username && player.score === score.score && player.totalcorrect === score.totalcorrect)) + 1
         return suffixMe(num)
     }
 
     return (
-        <div>
-        <img style={{maxWidth:'30%'}} src='/images/game over.png' alt="game over"/>
+        <>
+          <img style={{maxWidth:'30%'}} src='/images/game over.png' />
+           <div className='game-over-info'>
             <h4>Final Score: <b>{playerData.score} Points</b> </h4>
-          <div className="player-data-container">
-            <p>You knew <b>{playerData.totalcorrect}</b> out of <b>{playerData.totalplayed}</b> (attempted) songs!</p>
-            <p>And you placed <b>{findPlayerPosition(playerData)}</b> on the Leaderboard!</p>
-          </div>
-          <div>{place < 4? <iframe  src="https://pixabay.com/videos/id-694/" type="video/mp4" title="congrats" allow="autoplay"></iframe>: null}</div>
+             <p>You knew <b>{playerData.totalcorrect}</b> out of <b>{playerData.totalplayed}</b> (attempted) songs!</p>
+              <p>And you placed <b>{findPlayerPosition(playerData)}</b> on the Leaderboard!</p>
         </div>
+        </>
     )
 }
 
