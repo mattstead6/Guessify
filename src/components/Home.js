@@ -1,7 +1,7 @@
 import {useNavigate} from "react-router-dom";
 import {useEffect} from "react";
 import { useDocumentTitle } from "./utilites";
-import logo from "../GUESSIFY.png";
+
 
 
 function Home({handleSubmit, setPlayerData, playerData, resetPlayerData}) {
@@ -18,8 +18,8 @@ function Home({handleSubmit, setPlayerData, playerData, resetPlayerData}) {
 
     return (
         <> 
-           <img style={{maxWidth: '30%'}} src={logo} alt='Guessify logo'/>
-            <h2>do you know your shit?...</h2>
+           <img style={{maxWidth: '50%'}} src='/images/GUESSIFY.png' alt='Guessify logo'/>
+            <h2>Do you know your shit?...</h2>
             <form onSubmit={handleSubmit}>
                 <input onChange={e => setPlayerData(prev => ({...prev, username: e.target.value }))} type="text" id="name" name="name" placeholder='Your name here...' value={playerData.username}></input>
                 <button type="submit"><b>Start Game</b></button>
