@@ -66,9 +66,12 @@ function App() {
 
   function toggleIsHard(){
     setIsHard(()=> !isHard)
+    setPlayerData(prev => isHard? {...prev, mode: "Hard"} : {...prev, mode: "Normal"})
+  
   }
 
   return (
+    <>
     <div className="App">
     <Routes>
       <Route path="/" element={
@@ -77,6 +80,7 @@ function App() {
                 playerData={playerData} 
                 toggleIsHard={toggleIsHard}
                 isHard={isHard}
+                setIsHard={setIsHard}
                 resetPlayerData={resetPlayerData}/>} />
       <Route path="GameContainer" element={
           <GameContainer token={token} 
@@ -88,10 +92,14 @@ function App() {
       <Route path="Leaderboard" element={<Leaderboard isHard={isHard} playerData={playerData} correctAnswers={correctAnswers} setCorrectAnswers={setCorrectAnswers}/>} />
     </Routes>
 
+
     {!token ? <a id='login-button' href={`${AUTH_ENDPOINT}?client_id=${CLIENT_ID}&redirect_uri=${REDIRECT_URI}&response_type=${RESPONSE_TYPE}`}><b>Login to Spotify</b></a>
     : <button className='login-logout' onClick={logout}><b>Logout</b></button>}
+
     
     </div>
+ 
+    </>
 
   );
 }

@@ -4,6 +4,7 @@ function AnswerList({correctAnswers}) {
     console.log(correctAnswers)
 
     return (
+
         <div className="answer-list-container">
             <div className="title">
             <img style={{maxWidth: '30%'}} src='/images/Song list.png' alt='Played Song List'></img>
