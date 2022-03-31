@@ -65,9 +65,12 @@ function App() {
 
   function toggleIsHard(){
     setIsHard(()=> !isHard)
+    setPlayerData(prev => isHard? {...prev, mode: "Hard"} : {...prev, mode: "Normal"})
+  
   }
 
   return (
+    <>
     <div className="App">
     <Routes>
       <Route path="/" element={
@@ -76,6 +79,7 @@ function App() {
                 playerData={playerData} 
                 toggleIsHard={toggleIsHard}
                 isHard={isHard}
+                setIsHard={setIsHard}
                 resetPlayerData={resetPlayerData}/>} />
       <Route path="GameContainer" element={
           <GameContainer token={token} 
@@ -89,8 +93,11 @@ function App() {
 
     {!token ? <a id='login-button' href={`${AUTH_KEYS.AUTH_ENDPOINT}?client_id=${AUTH_KEYS.CLIENT_ID}&redirect_uri=${AUTH_KEYS.REDIRECT_URI}&response_type=${AUTH_KEYS.RESPONSE_TYPE}`}><b>Login to Spotify</b></a>
     : <button onClick={logout}><b>Logout</b></button>}
+
     
     </div>
+ 
+    </>
 
   );
 }

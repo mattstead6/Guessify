@@ -4,9 +4,6 @@ import { STAT_URL, useDocumentTitle, } from "./utilites";
 import GameOver from "./GameOver";
 import AnswerList from "./AnswerList";
 
-
-
-
 function Leaderboard ({playerData, correctAnswers, setCorrectAnswers, isHard}) {
     const [scores, setScores] = useState([]) 
     const [category, setCategory] = useState("All")
@@ -43,41 +40,48 @@ function Leaderboard ({playerData, correctAnswers, setCorrectAnswers, isHard}) {
             <td>{score.mode}</td>
         </tr> 
     ))
-    
 
 
 
     return (
-        <div >  
-       {playerData.totalplayed !== 0 ? <GameOver scores={scores} playerData={playerData}/> : null}
-       <img style={{maxWidth: playerData.totalplayed === 0? '40%':'30%'}} src='/images/leaderboard.png' alt='Leaderboard'/>
-
-            <ol  className="game-over-info">
-            <table id='lb' className="leaderboard-table">
-                <thead>
-                <tr>
-                    <th>Name</th>
-                    <th>Final Score</th>
-                    <th>Difficulty</th>
-                    <th>
-                    <select onChange={handleCategory}>
-                        <option>All</option>
-                        <option>Normal</option>
-                        <option>Hard</option>
-                    </select>
-                    </th>
-                </tr>
-                </thead>
-                <tbody>
-                    
-                        {displayBoard}
-                    
-                </tbody>
-            </table>
-            </ol>
-
-            {playerData.totalplayed !== 0 ? <AnswerList correctAnswers={editedAnswers} /> : null }
-             <button onClick={()=> navigate("/")}>{playerData.totalplayed === 0 ? <b>Play Game</b> : <b>Play Again</b>}</button>
+        <div >
+            <div className="parent-parent-container" >
+                <div className="game-over-container">
+                    {playerData.totalplayed !== 0 ? <GameOver scores={scores} playerData={playerData}/> : null}
+                </div>
+                <div className="parent-container">
+                    <div className={playerData.totalplayed !== 0 ? "leaderboard-container" : "leaderboard-container-nostart"}>
+                        <div className="title">
+                            <img style={{maxWidth: playerData.totalplayed === 0? '40%':'30%'}} src='/images/leaderboard.png' alt='Leaderboard'/>
+                        </div>
+                        <div className={playerData.totalplayed !== 0 ? "table-container" : "table-container-nostart"}>
+                            <ol  className="game-over-info">
+                                <table className="leaderboard-table">
+                                    <thead>
+                                        <tr>
+                                            <th>Name</th>
+                                            <th>Final Score</th>
+                                            <th>Difficulty</th>
+                                            <select onChange={handleCategory}>
+                                                <option>All</option>
+                                                <option>Normal</option>
+                                                <option>Hard</option>
+                                            </select>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {displayBoard}
+                                    </tbody>
+                                </table>
+                            </ol>
+                        </div>
+                    </div>
+                    {playerData.totalplayed !== 0 ? <AnswerList correctAnswers={editedAnswers} /> : null }
+                </div>
+            </div>
+                <div className="play-again-btn">
+                    <button onClick={()=> navigate("/")}>{playerData.totalplayed === 0 ? <b>Play Game</b> : <b>Play Again</b>}</button>
+                </div>
 
            
         </div>
