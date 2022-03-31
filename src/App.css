@@ -38,7 +38,7 @@ section h2 {
 }
 
 hard {
-  color:aqua;
+  color: aqua;
 }
 
 .name {
@@ -56,59 +56,41 @@ hard {
   box-sizing: border-box;
 }
 
-*
-{
-    margin:0;
-    padding:0;
-    box-sizing: border-box;
+section {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background: #001300;
+  animation: changeColor 5s linear infinite;
+}
+section h2 {
+  color: red;
+  font-family: "Nova Flat";
+  font-weight: 300;
+  letter-spacing: 10px;
 }
 
-section
-{
-    position:relative;
-    width: 100%;
-    height:100vh;
-    display:flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    background: #001300;
-    animation: changeColor 5s linear infinite
-
-}
-section h2 
-{
-color: red;
-font-family: "Nova Flat";
-font-weight: 300;
-Letter-spacing: 10px
+.name {
+  font-family: "Nova Flat";
 }
 
-.name 
-{
-    font-family: "Nova Flat";
+.image {
+  height: 30%;
+  width: 40%;
 }
 
-
-.image
-{
-height: 30%;
-width: 40%;
+@keyframes changeColor {
+  0% {
+    filter: hue-rotate(0deg);
+  }
+  100% {
+    filter: hue-rotate(360deg);
+  }
 }
-
-@keyframes changeColor
-{
-    0%
-    {
-        filter: hue-rotate(0deg);
-    }
-    100%
-    {
-        filter: hue-rotate(360deg);
-    }
-}
-
-
 
 .name {
   font-family: "Nova Flat";
@@ -224,9 +206,9 @@ button {
   }
 }
 
-button:hover {
+/* button:hover {
   filter: brightness(110%);
-}
+} */
 
 button:hover {
   transform: translateY(-6px);
@@ -349,31 +331,101 @@ input:placeholder-shown + .form__label {
     padding: 12px 42px;
   }
 }
-.game-over-info {
+.game-over-container {
+  display: block;
+}
+.stuff {
+  margin: auto;
+}
+/* .game-over-info {
   border: 5px solid;
-  max-width: 50%;
+
   max-height: 400px;
-  margin:auto;
+
+  overflow: scroll;
+  border-radius: 12px;
+  border-color: #00ff0a;
+} */
+.parent-parent-container {
+  display: inline-block;
+}
+.parent-container {
+  width: 100%;
+}
+.leaderboard-container-nostart {
+  width: 50%;
+  margin: auto;
+}
+
+.leaderboard-container {
+  width: 50%;
+  float: left;
+  padding: 10px;
+  padding-left: 5em;
+}
+.title {
+  height: 4em;
+}
+
+.table-container-nostart {
+  border: 5px solid;
+  height: 25em;
+  overflow: scroll;
+  border-radius: 12px;
+  border-color: #00ff0a;
+  height: 30em;
+}
+
+.table-container {
+  border: 5px solid;
+
+  height: 25em;
+
+  overflow: scroll;
+  border-radius: 12px;
+  border-color: #00ff0a;
+}
+.leaderboard-table {
+  margin: auto;
+  border-spacing: 1em;
+  table-layout: fixed;
+  border-collapse: collapse;
+  text-align: left;
+}
+.game-over-info a {
+  color: #ff00ff;
+  text-decoration: none;
+}
+.answer-list-container {
+  width: 50%;
+  float: right;
+  padding: 10px;
+}
+.list-container {
+  padding: 0;
+
+  border: 5px solid;
+  height: 25em;
+
   overflow: scroll;
   border-radius: 12px;
   border-color: #00ff0a;
 }
 
-.game-over-info a {
-  color: #ff00ff;
-  text-decoration: none;
-}
 .answer-list {
-  padding: 0;
   list-style-type: none;
+
+  text-align: left;
+  margin-left: 2em;
+  text-indent: -2em;
 }
 
-.song-details{
-  color: #bbf5bb;
+.song-details {
+  color: #ff00ff;
+  text-shadow: 0 0 0.2em #000000;
 }
 
-#lb {
-  text-align: center;
+.play-again-btn {
   margin: auto;
 }
 
@@ -381,8 +433,6 @@ input:placeholder-shown + .form__label {
   transform: translateY(-6px);
   transition: transform 250ms cubic-bezier(0.3, 0.7, 0.4, 1.5);
 }
-
-
 
 .normal {
   position: relative;
@@ -408,10 +458,7 @@ input:placeholder-shown + .form__label {
   background: hsl(0deg 0% 0% / 0.25);
   will-change: transform;
   transform: translateY(2px);
-  transition:
-    transform
-    600ms
-    cubic-bezier(.3, .7, .4, 1);
+  transition: transform 600ms cubic-bezier(0.3, 0.7, 0.4, 1);
 }
 
 .normal {
@@ -440,10 +487,7 @@ input:placeholder-shown + .form__label {
   background: rgb(20, 200, 255);
   will-change: transform;
   transform: translateY(-4px);
-  transition:
-    transform
-    600ms
-    cubic-bezier(.3, .7, .4, 1);
+  transition: transform 600ms cubic-bezier(0.3, 0.7, 0.4, 1);
 }
 
 @media (min-width: 768px) {
@@ -459,10 +503,7 @@ input:placeholder-shown + .form__label {
 
 .normal:hover {
   transform: translateY(-6px);
-  transition:
-    transform
-    250ms
-    cubic-bezier(.3, .7, .4, 1.5);
+  transition: transform 250ms cubic-bezier(0.3, 0.7, 0.4, 1.5);
 }
 
 .normal:active {
@@ -472,10 +513,7 @@ input:placeholder-shown + .form__label {
 
 .normal:hover {
   transform: translateY(4px);
-  transition:
-    transform
-    250ms
-    cubic-bezier(.3, .7, .4, 1.5);
+  transition: transform 250ms cubic-bezier(0.3, 0.7, 0.4, 1.5);
 }
 
 .normal:active {
@@ -488,8 +526,8 @@ input:placeholder-shown + .form__label {
 }
 
 .normal {
-    margin-top: 1em;
-    max-width: 50%;
-    margin-left: auto;
-    margin-right: auto;
+  margin-top: 1em;
+  max-width: 50%;
+  margin-left: auto;
+  margin-right: auto;
 }

@@ -27,7 +27,7 @@ function GameOver({playerData, scores}) {
     return (
       <>
         <img style={{maxWidth:'30%'}} src='/images/game over.png' />
-          <div className='game-over-info'>
+          <div className='game-over-info stuff'>
             <h4>Final Score: <b>{playerData.score} Points</b> </h4>
             <p>You knew <b>{playerData.totalcorrect}</b> out of <b>{playerData.totalplayed}</b> (attempted) songs!</p>
             <p>And you placed <b>{findPlayerPosition(playerData)}</b> on the Leaderboard!</p>
