@@ -10,7 +10,7 @@ import { useNavigate } from "react-router-dom"
 function GameContainer({setPlayerData, token, playerData, resetPlayerData, correctAnswers, setCorrectAnswers, isHard}) {
 
     //full gametimer, player has 60 seconds to guess as many songs as possible
-    const [gameTimer, setGameTimer] = useState(isHard ? 5 : 10) 
+    const [gameTimer, setGameTimer] = useState(61) 
 
     const [gameOver, setGameOver] = useState(false) 
     const navigate = useNavigate()
@@ -22,12 +22,15 @@ function GameContainer({setPlayerData, token, playerData, resetPlayerData, corre
    
     useEffect(() => { //retrieves initial song data
        const timeID = setTimeout(() => {
-        if (gameTimer > 0) {
-        setGameTimer(gameTimer - 1)
+        if (gameTimer > 1) {
+            setGameTimer(gameTimer - 1)
         // console.log(gameTimer)
         }
-        else{
+        else if (gameTimer === 1){
             setGameOver(true)
+            setGameTimer(gameTimer - 1)    
+        }
+        else{
             handlePOSTRecord()
         }
       },1000) ;

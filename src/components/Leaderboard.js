@@ -42,6 +42,7 @@ function Leaderboard ({playerData, correctAnswers, setCorrectAnswers, isHard}) {
     ))
 
 
+
     return (
         <div >
             <div className="parent-parent-container" >
@@ -81,6 +82,7 @@ function Leaderboard ({playerData, correctAnswers, setCorrectAnswers, isHard}) {
                 <div className="play-again-btn">
                     <button onClick={()=> navigate("/")}>{playerData.totalplayed === 0 ? <b>Play Game</b> : <b>Play Again</b>}</button>
                 </div>
+
            
         </div>
     )
