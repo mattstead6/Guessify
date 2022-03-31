@@ -9,27 +9,5 @@ Introducing " ", the brand new game to test your music knowledge. in this game, 
 6. at the end of the 5 minutes, the app will display a "TIME'S UP" message
 7. then the user will be redirected to a high scores page, and also display the user's final score.
 
-Game Rules:
-10 points per correct answer
--10 points per wrong answer
--5 points per skip
--5 points per auto-refresh-song
-
-To-dos:
-
-- set total gametime timer
-- state variable with user name, user score in App.js, to be passd down to GameContainer and Leaderboard
-- improve search algorithm to avoid showign duplicate songs
-- CSS stylings
-  . - persist correct song data in db.json
-- end of game flow
-
-
-
-- diplay list of correct answers on quiz completionn
-  . - add links to preview, open in spotify
-- limit leaderboard to top ten
-- 
-
-Bugs:
-
+Game Scoring:
+5 points per correct answer
