@@ -33,7 +33,7 @@ function Home({handleSubmit, setPlayerData, playerData, resetPlayerData, toggleI
                 <button>Instructions</button>
                 
            
-           <img style={{maxWidth: '30%'}} src={logo} alt='Guessify logo'/>
+           <img style={{maxWidth: '30%'}} src="/images/GUESSIFY.png" alt='Guessify logo'/>
             <h2>Play Now</h2>
 
             <form onSubmit={handleSubmit}>

@@ -23,7 +23,6 @@
       "id": 4
     },
     {
-
       "username": "Duckleberry Finn",
       "score": 70,
       "totalcorrect": 14,
@@ -113,6 +112,22 @@
       "totalcorrect": 7,
       "totalplayed": 8,
       "id": 19
+    },
+    {
+      "username": "lettuce",
+      "score": 10,
+      "totalcorrect": 2,
+      "totalplayed": 2,
+      "mode": "Normal",
+      "id": 20
+    },
+    {
+      "username": "raa",
+      "score": 10,
+      "totalcorrect": 2,
+      "totalplayed": 12,
+      "mode": "Normal",
+      "id": 21
     }
   ]
 }
