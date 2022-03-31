@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from "react";
 import {useNavigate} from "react-router-dom";
 
+
 let scorrr = 0
-function SongQuestion({setPlayerData, token, correctAnswers, setCorrectAnswers}){
+function SongQuestion({setPlayerData, token, correctAnswers, setCorrectAnswers, isHard}){
+
 
 
     // question timer moved into songQuestion for bug purposes and to make it more modular
@@ -10,7 +12,7 @@ function SongQuestion({setPlayerData, token, correctAnswers, setCorrectAnswers})
     const [allSongs ,setAllSongs] = useState([]) 
 
     
-    const [timeRemaining, setTimeRemaining] = useState(10);
+    const [timeRemaining, setTimeRemaining] = useState(isHard? 5 : 10);
     const alphabet = "abcdefghijklmnopqrstuvwxyz"
     let randomChar = alphabet.charAt(Math.floor(Math.random() * alphabet.length))
 
@@ -23,7 +25,7 @@ function SongQuestion({setPlayerData, token, correctAnswers, setCorrectAnswers})
          }
          else{
            getSongs()
-           .then(setTimeRemaining(10)) 
+           .then(setTimeRemaining(isHard? 5 : 10)) 
            setPlayerData(prev => ({...prev, totalplayed: prev.totalplayed + 1})) 
          }
          console.log('loaded song;', correctSong.name)
@@ -32,20 +34,21 @@ function SongQuestion({setPlayerData, token, correctAnswers, setCorrectAnswers})
     
          
      }, [timeRemaining])
+ 
+   
+     function getSongs() {
+       return fetch(isHard ? `https://api.spotify.com/v1/search?q=%25${randomChar}%25&type=track&limit=7&offset=${Math.floor(Math.random() * 1000)}`
+       : `https://api.spotify.com/v1/search?q=%25${randomChar}%25&type=track&limit=4&offset=${Math.floor(Math.random() * 1000)}`, 
+        {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': 'Bearer ' + token
+            }})
+            .then( res => res.json())
+            .then( data => handleSongBatch(data.tracks.items))
+        }
 
-        
-        
-        function getSongs() {
-            return fetch(`https://api.spotify.com/v1/search?q=%25${randomChar}%25&type=track&limit=4&offset=${Math.floor(Math.random() * 1000)}`, 
-            {
-                method: 'GET',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Authorization': 'Bearer ' + token
-                }})
-                .then( res => res.json())
-                .then( data => handleSongBatch(data.tracks.items))
-            }
             
         function handleSongBatch(songs) {
             setCorrectSong(() => songs.find(song => song.preview_url))
@@ -53,11 +56,14 @@ function SongQuestion({setPlayerData, token, correctAnswers, setCorrectAnswers})
             setCorrectAnswers((prev) => [...prev, correctSong])
             setTimeRemaining(10)
         }
+
     
         
         function handleAnswer(e, answer) {
             scorrr+=5
             console.log(scorrr)
+            setTimeRemaining(isHard ? 10 : 5)
+
         if (answer === correctSong.name){
             setPlayerData((playerData) => ({...playerData, score: playerData.score + 5,totalcorrect: playerData.totalcorrect + 1,totalplayed: playerData.totalplayed + 1}))
         }
