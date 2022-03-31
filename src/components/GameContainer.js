@@ -14,7 +14,7 @@ function GameContainer({setPlayerData, token, playerData, resetPlayerData, corre
     const navigate = useNavigate()
     useDocumentTitle('GUESSIFY GAME TIME')
 
-   console.log('game container render')
+ 
 
 
     useEffect(() => {
@@ -25,7 +25,7 @@ function GameContainer({setPlayerData, token, playerData, resetPlayerData, corre
        const timeID = setTimeout(() => {
         if (gameTimer > 0) {
         setGameTimer(gameTimer - 1)
-       console.log(gameTimer)
+        // console.log(gameTimer)
         }
         else{
             setGameOver(true)
@@ -39,8 +39,10 @@ function GameContainer({setPlayerData, token, playerData, resetPlayerData, corre
     
 
     function handlePOSTRecord(){
+
        fetch(STAT_URL, fetchConfigObj('POST', {...playerData, score: playerData.totalcorrect * 5, mode: isHard ? "Hard" : "Normal"}))
        .then(resp => {if (resp.ok) navigate("/Leaderboard")} )
+
     }
 
  
@@ -52,9 +54,11 @@ function GameContainer({setPlayerData, token, playerData, resetPlayerData, corre
 
             <p>Your name: {playerData.username}</p>
 
+
            {isHard ? <h4>This is Hard Mode..good luck</h4> : <h4>This is Normal mode</h4>} 
 
-            {!gameOver? <SongQuestion isHard={isHard} token={token} setPlayerData={setPlayerData} correctAnswers={correctAnswers} setCorrectAnswers={setCorrectAnswers}/> : null}
+            {!gameOver? <SongQuestion isHard={isHard} token={token} setPlayerData={setPlayerData} correctAnswers={correctAnswers} setCorrectAnswers={setCorrectAnswers}/> : <p>Posting Score...</p>}}
+
             
         </div>
     )

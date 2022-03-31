@@ -2,19 +2,22 @@ import React, { useEffect, useState } from "react";
 import {useNavigate} from "react-router-dom";
 
 
+let scorrr = 0
 function SongQuestion({setPlayerData, token, correctAnswers, setCorrectAnswers, isHard}){
 
-    console.log('songQuestion rerender')
+
 
     // question timer moved into songQuestion for bug purposes and to make it more modular
     const [correctSong ,setCorrectSong] = useState({}) 
     const [allSongs ,setAllSongs] = useState([]) 
+
     
     const [timeRemaining, setTimeRemaining] = useState(isHard? 5 : 10);
     const alphabet = "abcdefghijklmnopqrstuvwxyz"
     let randomChar = alphabet.charAt(Math.floor(Math.random() * alphabet.length))
 
-    useEffect(() => { //retrieves initial song data
+    useEffect(() => {
+        //retrieves initial song data
         if (!allSongs.find(song => song.preview_url)) getSongs()
         const timeID = setTimeout(() => {
          if (timeRemaining > 0) {
@@ -25,8 +28,10 @@ function SongQuestion({setPlayerData, token, correctAnswers, setCorrectAnswers, 
            .then(setTimeRemaining(isHard? 5 : 10)) 
            setPlayerData(prev => ({...prev, totalplayed: prev.totalplayed + 1})) 
          }
+         console.log('loaded song;', correctSong.name)
        },1000) ;
        return () => {clearTimeout(timeID)}  
+    
          
      }, [timeRemaining])
  
@@ -43,32 +48,37 @@ function SongQuestion({setPlayerData, token, correctAnswers, setCorrectAnswers, 
             .then( res => res.json())
             .then( data => handleSongBatch(data.tracks.items))
         }
-        
-        function handleSongBatch(songs) {
 
+            
+        function handleSongBatch(songs) {
             setCorrectSong(() => songs.find(song => song.preview_url))
             setAllSongs(songs.sort((a, b) => 0.5 - Math.random()))
             setCorrectAnswers((prev) => [...prev, correctSong])
+            setTimeRemaining(10)
         }
 
-   
+    
+        
+        function handleAnswer(e, answer) {
+            scorrr+=5
+            console.log(scorrr)
+            setTimeRemaining(isHard ? 10 : 5)
 
-
-    function handleAnswer(answer) {
-        getSongs()
-        setTimeRemaining(isHard ? 10 : 5)
         if (answer === correctSong.name){
-            setPlayerData(prev => ({...prev, score: prev.score + 5,totalcorrect: prev.totalcorrect + 1,totalplayed: prev.totalplayed + 1}))
+            setPlayerData((playerData) => ({...playerData, score: playerData.score + 5,totalcorrect: playerData.totalcorrect + 1,totalplayed: playerData.totalplayed + 1}))
         }
         else{
-            setPlayerData(prev => ({...prev, totalplayed: prev.totalplayed + 1}))
+            setPlayerData((playerData) => ({...playerData, totalplayed: playerData.totalplayed + 1}))
         }
+        getSongs()
+        // setTimeRemaining(10)
     }
 
 
     // array of answers made up of current song and 3 random songs
     const multipleChoice = allSongs.map(song => (
-    <li style={{listStyleType: "none"}} key={song.id} ><button onClick={e => handleAnswer(e.target.name)} name={song.name}><b>{song.name}</b></button></li> ) )
+    // <li style={{listStyleType: "none"}} key={song.id} ><button onClick={e => handleAnswer(e.target.name)} name={song.name}><b>{song.name}</b></button></li> ) )
+    <button style={{listStyleType: "none"}} key={song.id} onClick={e => handleAnswer(e, song.name)} ><b>{song.name}</b></button> ) )
 
      if (correctSong) return (
         <>

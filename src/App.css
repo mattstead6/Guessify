@@ -358,6 +358,33 @@ button {
   }
 /* CSS */
 
+.game-over-info {
+  border: 5px solid;
+  max-width: 50%;
+  max-height: 400px;
+  margin:auto;
+  overflow: scroll;
+  border-radius: 12px;
+  border-color: #00ff0a;
+}
+
+.game-over-info a {
+  color: #ff00ff;
+  text-decoration: none;
+}
+.answer-list {
+  padding: 0;
+  list-style-type: none;
+}
+
+.song-details{
+  color: #bbf5bb;
+}
+
+#lb {
+  text-align: center;
+  margin: auto;
+}
 
 /* // WHAT IS THIS CSS DOING? */
 
