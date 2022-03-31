@@ -51,7 +51,8 @@ function Leaderboard ({playerData, correctAnswers, setCorrectAnswers, isHard}) {
 
 
     return (
-        <div >  
+        <section className="container">
+            <div className="left-half">
        {playerData.totalplayed !== 0 ? <GameOver scores={scores} playerData={playerData}/> : null}
        <img style={{maxWidth: playerData.totalplayed === 0? '40%':'30%'}} src='/images/leaderboard.png' alt='Leaderboard'/>
 
@@ -76,31 +77,12 @@ function Leaderboard ({playerData, correctAnswers, setCorrectAnswers, isHard}) {
                 </tbody>
             </table>
             </ol>
-
+            </div>
+            <div className="right-half">
             {playerData.totalplayed !== 0 ? <AnswerList correctAnswers={editedAnswers} /> : null }
              <button onClick={()=> navigate("/")}>{playerData.totalplayed === 0 ? <b>Play Game</b> : <b>Play Again</b>}</button>
-
-            <img style={{maxWidth: playerData.totalplayed === 0? '40%':'30%'}} src='/images/leaderboard.png' alt='Leaderboard'/>
-            <div className="leaderboard-container">
-                <ol>
-                    <table className="leaderboard-table">
-                        <thead>
-                            <tr>
-                                <th>Name</th>
-                                <th>Final Score</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {displayBoard}
-                        </tbody>
-                    </table>
-                </ol>
-            </div>
-            <div className="answerlist-container">
-                <AnswerList correctAnswers={editedAnswers} />
-                <button onClick={()=> navigate("/")}>{playerData.totalplayed === 0 ? <b>Play Game</b> : <b>Play Again</b>}</button>
              </div>
-        </div>
+        </section>
     )
 }
 

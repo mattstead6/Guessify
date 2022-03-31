@@ -5,6 +5,7 @@ function AnswerList({correctAnswers}) {
 
     return (
         <>
+        <div className="answer-list">
         <img style={{maxWidth: '30%'}} src='/images/Song list.png' alt='Played Song List'></img>
         <div id='song-list' className="game-over-info">
             <ul className="answer-list">
@@ -23,6 +24,7 @@ function AnswerList({correctAnswers}) {
                     )
                 )}
             </ul>
+        </div>
         </div>
         </>
     )
