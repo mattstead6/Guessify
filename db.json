@@ -23,130 +23,95 @@
       "id": 6
     },
     {
-      "username": "Will Smith",
-      "score": 10,
-      "totalcorrect": 6,
-      "totalplayed": 8,
+      "username": "Duckleberry Finn",
+      "score": 70,
+      "totalcorrect": 14,
+      "totalplayed": 14,
       "id": 7
     },
     {
-      "username": "FATMANSCOoP",
-      "score": 5,
-      "totalcorrect": 4,
+      "username": "Bart ",
+      "score": 95,
+      "totalcorrect": 19,
+      "totalplayed": 19,
+      "id": 8
+    },
+    {
+      "username": "fake name",
+      "score": 30,
+      "totalcorrect": 6,
       "totalplayed": 9,
       "id": 9
     },
     {
-      "username": "Leonardo D'vinci",
-      "score": 5,
-      "totalcorrect": 3,
-      "totalplayed": 11,
+      "username": "My Dog",
+      "score": 95,
+      "totalcorrect": 19,
+      "totalplayed": 19,
+      "id": 10
+    },
+    {
+      "username": "Static Shock",
+      "score": 90,
+      "totalcorrect": 18,
+      "totalplayed": 18,
+      "id": 11
+    },
+    {
+      "username": "bobo",
+      "score": 95,
+      "totalcorrect": 19,
+      "totalplayed": 19,
+      "id": 12
+    },
+    {
+      "username": "Daniel Brito",
+      "score": 100,
+      "totalcorrect": 20,
+      "totalplayed": 20,
       "id": 13
     },
     {
-      "username": "Vegeta",
-      "score": 10,
-      "totalcorrect": 5,
-      "totalplayed": 10,
+      "username": "Goku",
+      "score": 75,
+      "totalcorrect": 15,
+      "totalplayed": 15,
       "id": 14
     },
     {
-      "username": "person",
-      "score": 5,
-      "totalcorrect": 5,
-      "totalplayed": 19,
+      "username": "Chett Tiller",
+      "score": 40,
+      "totalcorrect": 8,
+      "totalplayed": 11,
       "id": 15
     },
     {
-      "username": "jackie chan",
-      "score": 5,
-      "totalcorrect": 6,
-      "totalplayed": 13,
-      "id": 22
-    },
-    {
       "username": "George Lopez",
-      "score": 5,
-      "totalcorrect": 3,
-      "totalplayed": 3,
-      "id": 23
+      "score": 40,
+      "totalcorrect": 8,
+      "totalplayed": 9,
+      "id": 16
     },
     {
-      "username": "Barack Obama",
-      "score": 5,
-      "totalcorrect": 1,
+      "username": "the daniel plant",
+      "score": 20,
+      "totalcorrect": 4,
+      "totalplayed": 7,
+      "id": 17
+    },
+    {
+      "username": "Spicy Ramen",
+      "score": 80,
+      "totalcorrect": 16,
+      "totalplayed": 16,
+      "id": 18
+    },
+    {
+      "username": "Drake",
+      "score": 35,
+      "totalcorrect": 7,
       "totalplayed": 8,
-      "id": 20
-    },
-    {
-      "username": "raa",
-      "score": 0,
-      "totalcorrect": 0,
-      "totalplayed": 0,
-      "id": 21
-    },
-    {
-      "username": "Yogurt",
-      "score": 0,
-      "totalcorrect": 0,
-      "totalplayed": 0,
-      "id": 22
-    },
-    {
-      "username": "lettuce",
-      "score": 0,
-      "totalcorrect": 0,
-      "totalplayed": 2,
-      "id": 23
-    },
-    {
-      "username": "raa",
-      "score": 0,
-      "totalcorrect": 0,
-      "totalplayed": 0,
-      "id": 24
-    },
-    {
-      "username": "Yogurt",
-      "score": 5,
-      "totalcorrect": 1,
-      "totalplayed": 5,
-      "id": 25
-    },
-    {
-      "username": "Yogurt",
-      "score": 25,
-      "totalcorrect": 5,
-      "totalplayed": 22,
-      "id": 26
-    },
-    {
-      "username": "Yogurt",
-      "score": 50,
-      "totalcorrect": 10,
-      "totalplayed": 27,
-      "id": 27
-    },
-    {
-      "username": "lettuce",
-      "score": 5,
-      "totalcorrect": 1,
-      "totalplayed": 5,
-      "id": 28
-    },
-    {
-      "username": "Yogurt",
-      "score": 45,
-      "totalcorrect": 9,
-      "totalplayed": 17,
-      "id": 29
-    },
-    {
-      "username": "raa",
-      "score": 5,
-      "totalcorrect": 1,
-      "totalplayed": 8,
-      "id": 30
+      "id": 19
     }
   ]
 }

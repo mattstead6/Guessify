@@ -12,19 +12,14 @@ function Leaderboard ({playerData, correctAnswers, setCorrectAnswers}) {
     const navigate = useNavigate()
     useDocumentTitle("GUESSIFY LEADERBOARD")
     let editedAnswers = correctAnswers.slice(1);
-    console.log(correctAnswers)
-    console.log(playerData)
     
     useEffect(()=> {
         fetch(STAT_URL)
         .then(resp => resp.json())
         .then(scoreData => {
-            console.log(scoreData)
             const sortedScores = scoreData.sort((a, b) => {
                 return b.score - a.score
             })
-
-            console.log(sortedScores)
             setScores(sortedScores)
         })
     },[])
@@ -38,13 +33,13 @@ function Leaderboard ({playerData, correctAnswers, setCorrectAnswers}) {
         </tr>  
     ))
 
-    console.log(scores)
+
     return (
-        <div>  
+        <div >  
        {playerData.totalplayed !== 0 ? <GameOver scores={scores} playerData={playerData}/> : null}
        <img style={{maxWidth: playerData.totalplayed === 0? '40%':'30%'}} src='/images/leaderboard.png' alt='Leaderboard'/>
-            <ol>
-            <table className="leaderboard-table">
+            <ol  className="game-over-info">
+            <table id='lb' className="leaderboard-table">
                 <thead>
                 <tr>
                     <th>Name</th>
@@ -59,7 +54,7 @@ function Leaderboard ({playerData, correctAnswers, setCorrectAnswers}) {
             </table>
             </ol>
 
-            <AnswerList correctAnswers={editedAnswers} />
+            {playerData.totalplayed !== 0 ? <AnswerList correctAnswers={editedAnswers} /> : null }
              <button onClick={()=> navigate("/")}>{playerData.totalplayed === 0 ? <b>Play Game</b> : <b>Play Again</b>}</button>
 
         </div>
