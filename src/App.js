@@ -5,7 +5,7 @@ import {useEffect, useState} from "react"
 import GameContainer from './components/GameContainer';
 import Leaderboard from './components/Leaderboard';
 import Home from './components/Home';
-
+import { AUTH_KEYS } from './components/utilites';
          
   const resetPlayer = {
     username: "", 
@@ -20,11 +20,10 @@ function App() {
   const [playerData ,setPlayerData] = useState(resetPlayer)
   const [correctAnswers, setCorrectAnswers] = useState([])
   const [isHard, setIsHard] = useState(false)
-      //variables needed for authorization:
-  const CLIENT_ID = "ad207e953e224110b18641630a57a298" 
-  const REDIRECT_URI = "http://localhost:3000/"
-  const AUTH_ENDPOINT = "https://accounts.spotify.com/authorize"
-  const RESPONSE_TYPE = "token"
+
+
+
+  
 
   let navigate = useNavigate();
 
@@ -88,7 +87,7 @@ function App() {
       <Route path="Leaderboard" element={<Leaderboard isHard={isHard} playerData={playerData} correctAnswers={correctAnswers} setCorrectAnswers={setCorrectAnswers}/>} />
     </Routes>
 
-    {!token ? <a id='login-button' href={`${AUTH_ENDPOINT}?client_id=${CLIENT_ID}&redirect_uri=${REDIRECT_URI}&response_type=${RESPONSE_TYPE}`}><b>Login to Spotify</b></a>
+    {!token ? <a id='login-button' href={`${AUTH_KEYS.AUTH_ENDPOINT}?client_id=${AUTH_KEYS.CLIENT_ID}&redirect_uri=${AUTH_KEYS.REDIRECT_URI}&response_type=${AUTH_KEYS.RESPONSE_TYPE}`}><b>Login to Spotify</b></a>
     : <button onClick={logout}><b>Logout</b></button>}
     
     </div>

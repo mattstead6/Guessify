@@ -30,10 +30,10 @@ function Home({handleSubmit, setPlayerData, playerData, resetPlayerData, toggleI
         <> 
 
       
-                <button>Instructions</button>
+                <button><b>Instructions</b></button>
                 
            
-           <img style={{maxWidth: '30%'}} src="/images/GUESSIFY.png" alt='Guessify logo'/>
+           <img style={{maxWidth: '60%'}} src="/images/GUESSIFY.png" alt='Guessify logo'/>
             <h2>Play Now</h2>
 
             <form onSubmit={handleSubmit}>
@@ -41,9 +41,9 @@ function Home({handleSubmit, setPlayerData, playerData, resetPlayerData, toggleI
                 <button type="submit"><b>Start Game</b></button>
             </form>       
             <button onClick={() => navigate("./Leaderboard")}><b>Leaderboard</b></button>
-            {isHard ? <button className="normal" onClick={toggleIsHard}>Normal Mode</button>
+            {isHard ? <button className="normal" onClick={toggleIsHard}><b>Normal Mode</b></button>
             :
-            <button className= "hard" onClick={toggleIsHard}>Hard Mode</button>}
+            <button className= "hard" onClick={toggleIsHard}><b>Hard Mode</b></button>}
         </>
     )
 }
@@ -56,12 +56,3 @@ export default Home;
 
 
 
-// correctAnswers.map(answer => (
-//     !!answer.name ?
-
-//    ( <li>
-//         <b>Name: </b>{answer.name}, <b>artist: </b>{answer.artists[0].name}, 
-//         <a
-//         className="spotify-link"
-//         href={"https://open.spotify.com/track/" + answer.id}>open in spotify</a>
-//     </li>) : null))
