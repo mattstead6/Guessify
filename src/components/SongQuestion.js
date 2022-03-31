@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import {useNavigate} from "react-router-dom";
 
 
+
 let scorrr = 0
 function SongQuestion({setPlayerData, token, correctAnswers, setCorrectAnswers, isHard}){
 

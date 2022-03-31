@@ -6,16 +6,15 @@ import { fetchConfigObj, STAT_URL } from "./utilites";
 import { useNavigate } from "react-router-dom"
 
 
+
 function GameContainer({setPlayerData, token, playerData, resetPlayerData, correctAnswers, setCorrectAnswers, isHard}) {
 
     //full gametimer, player has 60 seconds to guess as many songs as possible
     const [gameTimer, setGameTimer] = useState(isHard ? 5 : 10) 
+
     const [gameOver, setGameOver] = useState(false) 
     const navigate = useNavigate()
     useDocumentTitle('GUESSIFY GAME TIME')
-
- 
-
 
     useEffect(() => {
         setCorrectAnswers([]);

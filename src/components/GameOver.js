@@ -1,9 +1,9 @@
-
+import {useEffect, useState} from 'react'
 
 function GameOver({playerData, scores}) {
-
+    const [place, setPlace] = useState(0)
     // below 2 functions finds position on leaderboard based on matching details
-
+    
     function suffixMe(num) {
         const j = num % 10,
           k = num % 100;
