@@ -18,23 +18,25 @@ function GameOver({playerData, scores}) {
           return `${num}th`;
         }
       }
-  
+
         
     function findPlayerPosition(player) {
-        
-        const num = scores.indexOf(scores.find(score => player.username === score.username && player.score === score.score && player.totalcorrect === score.totalcorrect)) + 1
+          
+      const num = scores.indexOf(scores.find(score => player.username === score.username && player.score === score.score && player.totalcorrect === score.totalcorrect)) + 1
         return suffixMe(num)
     }
 
     return (
-        <> 
-          <img style={{maxWidth:'30%'}} src='/images/game over.png' />
-           <div className='game-over-info'>
+      <>
+        <img style={{maxWidth:'30%'}} src='/images/game over.png' />
+          <div className='game-over-info stuff'>
+
             <h4>Final Score: <b>{playerData.score} Points</b> </h4>
-             <p>You knew <b>{playerData.totalcorrect}</b> out of <b>{playerData.totalplayed}</b> (attempted) songs!</p>
-              <p>And you placed <b>{findPlayerPosition(playerData)}</b> on the Leaderboard!</p>
-        </div>
-        </>
+            <p>You knew <b>{playerData.totalcorrect}</b> out of <b>{playerData.totalplayed}</b> (attempted) songs!</p>
+            <p>And you placed <b>{findPlayerPosition(playerData)}</b> on the Leaderboard!</p>
+          </div>
+      </>
+
     )
 }
 
