@@ -11,13 +11,15 @@ import Home from './components/Home';
     username: "", 
     score: 0,  
     totalcorrect: 0, 
-    totalplayed: 0
+    totalplayed: 0,
+    mode: ''
   }
 
 function App() {
   const [token, setToken] = useState("")
   const [playerData ,setPlayerData] = useState(resetPlayer)
   const [correctAnswers, setCorrectAnswers] = useState([])
+  const [isHard, setIsHard] = useState(false)
       //variables needed for authorization:
   const CLIENT_ID = "ad207e953e224110b18641630a57a298" 
   const REDIRECT_URI = "http://localhost:3000/"
@@ -62,6 +64,9 @@ function App() {
     setPlayerData(resetPlayer);
   }
 
+  function toggleIsHard(){
+    setIsHard(()=> !isHard)
+  }
 
   return (
     <div className="App">
@@ -70,14 +75,17 @@ function App() {
           <Home handleSubmit={handleSubmit} 
                 setPlayerData={setPlayerData} 
                 playerData={playerData} 
+                toggleIsHard={toggleIsHard}
+                isHard={isHard}
                 resetPlayerData={resetPlayerData}/>} />
       <Route path="GameContainer" element={
           <GameContainer token={token} 
                          playerData={playerData} 
                          setPlayerData={setPlayerData} 
+                         isHard={isHard}
                          resetPlayerData={resetPlayerData} 
                          setCorrectAnswers={setCorrectAnswers}/>} />
-      <Route path="Leaderboard" element={<Leaderboard playerData={playerData} correctAnswers={correctAnswers} setCorrectAnswers={setCorrectAnswers}/>} />
+      <Route path="Leaderboard" element={<Leaderboard isHard={isHard} playerData={playerData} correctAnswers={correctAnswers} setCorrectAnswers={setCorrectAnswers}/>} />
     </Routes>
 
     {!token ? <a id='login-button' href={`${AUTH_ENDPOINT}?client_id=${CLIENT_ID}&redirect_uri=${REDIRECT_URI}&response_type=${RESPONSE_TYPE}`}><b>Login to Spotify</b></a>

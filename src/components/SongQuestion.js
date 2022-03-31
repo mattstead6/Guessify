@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import {useNavigate} from "react-router-dom";
 
 
-function SongQuestion({setPlayerData, token, correctAnswers, setCorrectAnswers}){
+function SongQuestion({setPlayerData, token, correctAnswers, setCorrectAnswers, isHard}){
 
     console.log('songQuestion rerender')
 
@@ -10,7 +10,7 @@ function SongQuestion({setPlayerData, token, correctAnswers, setCorrectAnswers})
     const [correctSong ,setCorrectSong] = useState({}) 
     const [allSongs ,setAllSongs] = useState([]) 
     
-    const [timeRemaining, setTimeRemaining] = useState(10);
+    const [timeRemaining, setTimeRemaining] = useState(isHard? 5 : 10);
     const alphabet = "abcdefghijklmnopqrstuvwxyz"
     let randomChar = alphabet.charAt(Math.floor(Math.random() * alphabet.length))
 
@@ -22,7 +22,7 @@ function SongQuestion({setPlayerData, token, correctAnswers, setCorrectAnswers})
          }
          else{
            getSongs()
-           .then(setTimeRemaining(10)) 
+           .then(setTimeRemaining(isHard? 5 : 10)) 
            setPlayerData(prev => ({...prev, totalplayed: prev.totalplayed + 1})) 
          }
        },1000) ;
@@ -32,7 +32,8 @@ function SongQuestion({setPlayerData, token, correctAnswers, setCorrectAnswers})
  
    
      function getSongs() {
-       return fetch(`https://api.spotify.com/v1/search?q=%25${randomChar}%25&type=track&limit=4&offset=${Math.floor(Math.random() * 1000)}`, 
+       return fetch(isHard ? `https://api.spotify.com/v1/search?q=%25${randomChar}%25&type=track&limit=7&offset=${Math.floor(Math.random() * 1000)}`
+       : `https://api.spotify.com/v1/search?q=%25${randomChar}%25&type=track&limit=4&offset=${Math.floor(Math.random() * 1000)}`, 
         {
             method: 'GET',
             headers: {
@@ -50,10 +51,12 @@ function SongQuestion({setPlayerData, token, correctAnswers, setCorrectAnswers})
             setCorrectAnswers((prev) => [...prev, correctSong])
         }
 
+   
+
 
     function handleAnswer(answer) {
         getSongs()
-        setTimeRemaining(10)
+        setTimeRemaining(isHard ? 10 : 5)
         if (answer === correctSong.name){
             setPlayerData(prev => ({...prev, score: prev.score + 5,totalcorrect: prev.totalcorrect + 1,totalplayed: prev.totalplayed + 1}))
         }

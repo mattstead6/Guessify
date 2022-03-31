@@ -7,8 +7,9 @@ import AnswerList from "./AnswerList";
 
 
 
-function Leaderboard ({playerData, correctAnswers, setCorrectAnswers}) {
+function Leaderboard ({playerData, correctAnswers, setCorrectAnswers, isHard}) {
     const [scores, setScores] = useState([]) 
+    const [category, setCategory] = useState("All")
     const navigate = useNavigate()
     useDocumentTitle("GUESSIFY LEADERBOARD")
     let editedAnswers = correctAnswers.slice(1);
@@ -29,26 +30,48 @@ function Leaderboard ({playerData, correctAnswers, setCorrectAnswers}) {
         })
     },[])
 
+
+    function handleCategory(e){
+        console.log(e.target.value)
+        let value =e.target.value
+        setCategory(value)
+    }
+
+    
+    const filteredItems = category==='All'?scores:scores.filter((player) => player.mode === category)
     
 
-    const displayBoard = scores.map(score => (
+    const displayBoard = filteredItems.map(score => (
         <tr key={score.id} >
             <td><li>{score.username}</li></td>
             <td>{score.score}</td>
-        </tr>  
+            <td>{score.mode}</td>
+        </tr> 
     ))
+    
+    // function filteredShit(category){
+    //     displayBoard.filter((player) => player.mode === category)
+    // } 
+
 
     console.log(scores)
     return (
         <div>  
        {playerData.totalplayed !== 0 ? <GameOver scores={scores} playerData={playerData}/> : null}
        <img style={{maxWidth: playerData.totalplayed === 0? '40%':'30%'}} src='/images/leaderboard.png' alt='Leaderboard'/>
+       
             <ol>
             <table className="leaderboard-table">
                 <thead>
                 <tr>
                     <th>Name</th>
                     <th>Final Score</th>
+                    <th>Difficulty</th>
+                    <select onChange={handleCategory}>
+                        <option>All</option>
+                        <option>Normal</option>
+                        <option>Hard</option>
+                    </select>
                 </tr>
                 </thead>
                 <tbody>
