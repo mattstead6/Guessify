@@ -68,9 +68,3 @@ function Home({handleSubmit, setPlayerData, playerData, resetPlayerData, toggleI
 
 export default Home;
 
-
-
-
-
-
-

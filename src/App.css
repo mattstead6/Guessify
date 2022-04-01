@@ -19,7 +19,6 @@
   box-sizing: border-box;
 }
 
-
 section h2 {
   color: red;
   font-family: "Nova Flat";
@@ -45,7 +44,6 @@ hard {
   padding: 0;
   box-sizing: border-box;
 }
-
 
 section {
   position: relative;
@@ -74,8 +72,6 @@ section h2 {
   width: 40%;
 }
 
-
-
 .name {
   font-family: "Nova Flat";
 }
@@ -85,14 +81,10 @@ section h2 {
   width: 40%;
 }
 
-
-
 section .loader {
   position: relative;
   display: flex;
 }
-
-
 
 /* button */
 
@@ -505,4 +497,3 @@ select {
   margin: auto;
   top: 1em;
 }
-

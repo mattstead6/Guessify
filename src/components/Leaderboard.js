@@ -9,7 +9,7 @@ function Leaderboard ({playerData, correctAnswers, setCorrectAnswers, isHard}) {
     const [category, setCategory] = useState("All")
     const navigate = useNavigate()
     useDocumentTitle("GUESSIFY LEADERBOARD")
-    let editedAnswers = correctAnswers.slice(1);
+    //let editedAnswers = correctAnswers.slice(1);
     
     useEffect(()=> {
         fetch(STAT_URL)
@@ -76,13 +76,12 @@ function Leaderboard ({playerData, correctAnswers, setCorrectAnswers, isHard}) {
                             </ol>
                         </div>
                     </div>
-                    {playerData.totalplayed !== 0 ? <AnswerList correctAnswers={editedAnswers} /> : null }
+                    {playerData.totalplayed !== 0 ? <AnswerList correctAnswers={correctAnswers} /> : null }
                 </div>
             </div>
-                <div className="play-again-btn">
-                    <button onClick={()=> navigate("/")}>{playerData.totalplayed === 0 ? <b>Play Game</b> : <b>Play Again</b>}</button>
-                </div>
-
+            <div className="play-again-btn">
+                <button onClick={()=> navigate("/")}>{playerData.totalplayed === 0 ? <b>Play Game</b> : <b>Play Again</b>}</button>
+            </div>
            
         </div>
     )

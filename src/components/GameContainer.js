@@ -10,15 +10,16 @@ import { useNavigate } from "react-router-dom"
 function GameContainer({setPlayerData, token, playerData, resetPlayerData, correctAnswers, setCorrectAnswers, isHard}) {
 
     //full gametimer, player has 60 seconds to guess as many songs as possible
+
     const [gameTimer, setGameTimer] = useState(61) 
 
     const [gameOver, setGameOver] = useState(false) 
     const navigate = useNavigate()
     useDocumentTitle('GUESSIFY GAME TIME')
 
-    useEffect(() => {
-        setCorrectAnswers([]);
-    },[])
+    // useEffect(() => {
+    //     setCorrectAnswers([]);
+    // },[])
    
     useEffect(() => { //retrieves initial song data
        const timeID = setTimeout(() => {
@@ -53,19 +54,22 @@ function GameContainer({setPlayerData, token, playerData, resetPlayerData, corre
     return (
         <>
         <div>
-            <img style={{maxWidth:'30%'}} src='/images/guess this song.png' alt='Guess this song' />
-
-            <p>Your name: {playerData.username}</p>
-
-
-           {isHard ? <h4>This is Hard Mode..good luck</h4> : <h4>This is Normal mode</h4>} 
-           
+            <div>
+                <img style={{maxWidth:'30%'}} src='/images/guess this song.png' alt='Guess this song' />
+            </div>
+            <div>
+                <p>Your name: {playerData.username}</p>
+            </div>
+            <div>
+                {isHard ? <h4>This is Hard Mode..good luck</h4> : <h4>This is Normal mode</h4>} 
+            </div>
 
             {!gameOver? <SongQuestion isHard={isHard} token={token} setPlayerData={setPlayerData} correctAnswers={correctAnswers} setCorrectAnswers={setCorrectAnswers}/> : <p>Posting Score...</p>}
 
             
         </div>
         <button onClick={() => navigate("/")}><b>Return To Main</b></button>
+        
         </>
     )
 }

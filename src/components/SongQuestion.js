@@ -54,7 +54,7 @@ function SongQuestion({setPlayerData, token, correctAnswers, setCorrectAnswers, 
         function handleSongBatch(songs) {
             setCorrectSong(() => songs.find(song => song.preview_url))
             setAllSongs(songs.sort((a, b) => 0.5 - Math.random()))
-            setCorrectAnswers((prev) => [...prev, correctSong])
+            //setCorrectAnswers((prev) => [...prev, correctSong])
             setTimeRemaining(10)
         }
 
@@ -67,9 +67,11 @@ function SongQuestion({setPlayerData, token, correctAnswers, setCorrectAnswers, 
 
         if (answer === correctSong.name){
             setPlayerData((playerData) => ({...playerData, score: playerData.score + 5,totalcorrect: playerData.totalcorrect + 1,totalplayed: playerData.totalplayed + 1}))
+            setCorrectAnswers((prev) => [...prev, {song: correctSong, wasCorrect: true}])
         }
         else{
             setPlayerData((playerData) => ({...playerData, totalplayed: playerData.totalplayed + 1}))
+            setCorrectAnswers((prev) => [...prev, {song: correctSong, wasCorrect: false}])
         }
         getSongs()
         // setTimeRemaining(10)
