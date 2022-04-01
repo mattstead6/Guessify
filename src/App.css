@@ -347,7 +347,7 @@ input:placeholder-shown + .form__label {
 }
 .list-container {
   padding: 1.5em;
-
+  max-width: 90%;
   border: 5px solid;
   height: 25em;
 

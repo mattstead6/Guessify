@@ -29,7 +29,7 @@ function SongQuestion({setPlayerData, token, correctAnswers, setCorrectAnswers, 
            .then(setTimeRemaining(isHard? 5 : 10)) 
            setPlayerData(prev => ({...prev, totalplayed: prev.totalplayed + 1})) 
          }
-         console.log('loaded song;', correctSong.name)
+        window.scrollTo({top: 600, behavior: 'smooth'})
        },1000) ;
        return () => {clearTimeout(timeID)}  
     
@@ -87,7 +87,7 @@ function SongQuestion({setPlayerData, token, correctAnswers, setCorrectAnswers, 
         <>
         <h2>Guess the name of this song..</h2>
         <img style={{maxWidth: '20%'}} src='/images/guessify-mascot1.gif' alt='Dancing mascot'></img>
-         <audio autoPlay controls src={correctSong.preview_url} title={correctSong.name} ></audio>
+         <audio autoPlay controls src={correctSong.preview_url} title='Nice try bucko!' ></audio>
 
            <ul style={{padding: '0'}} >
           {multipleChoice}
