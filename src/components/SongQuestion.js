@@ -54,7 +54,7 @@ function SongQuestion({setPlayerData, token, correctAnswers, setCorrectAnswers, 
         function handleSongBatch(songs) {
             setCorrectSong(() => songs.find(song => song.preview_url))
             setAllSongs(songs.sort((a, b) => 0.5 - Math.random()))
-            setCorrectAnswers((prev) => [...prev, correctSong])
+            //setCorrectAnswers((prev) => [...prev, correctSong])
             setTimeRemaining(10)
         }
 
@@ -67,9 +67,11 @@ function SongQuestion({setPlayerData, token, correctAnswers, setCorrectAnswers, 
 
         if (answer === correctSong.name){
             setPlayerData((playerData) => ({...playerData, score: playerData.score + 5,totalcorrect: playerData.totalcorrect + 1,totalplayed: playerData.totalplayed + 1}))
+            setCorrectAnswers((prev) => [...prev, {song: correctSong, wasCorrect: true}])
         }
         else{
             setPlayerData((playerData) => ({...playerData, totalplayed: playerData.totalplayed + 1}))
+            setCorrectAnswers((prev) => [...prev, {song: correctSong, wasCorrect: false}])
         }
         getSongs()
         // setTimeRemaining(10)
@@ -82,15 +84,19 @@ function SongQuestion({setPlayerData, token, correctAnswers, setCorrectAnswers, 
     <button style={{listStyleType: "none"}} key={song.id} onClick={e => handleAnswer(e, song.name)} ><b>{song.name}</b></button> ) )
 
      if (correctSong) return (
-        <>
-        <h2>Guess the name of this song..</h2>
-         <iframe src={correctSong.preview_url} title={correctSong.name} allow="autoplay"></iframe>
-
-           <ul style={{padding: '0'}} >
-          {multipleChoice}
-           </ul>
-           <h3>{timeRemaining} seconds left</h3>
-        </>
+        <div>
+            <h2>Guess the name of this song..</h2>
+            <iframe src={correctSong.preview_url} title={correctSong.name} allow="autoplay"></iframe>
+            <div >
+                <ul style={{padding: '0'}} >
+                    {multipleChoice}
+                </ul>
+            </div>
+            <div className="countdown-container">
+                <h3>{timeRemaining} seconds left</h3>
+            </div>
+        </div>
+        
     )
 
     else {

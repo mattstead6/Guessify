@@ -64,18 +64,3 @@ function Home({handleSubmit, setPlayerData, playerData, resetPlayerData, toggleI
 
 export default Home;
 
-
-
-
-
-
-
-// correctAnswers.map(answer => (
-//     !!answer.name ?
-
-//    ( <li>
-//         <b>Name: </b>{answer.name}, <b>artist: </b>{answer.artists[0].name}, 
-//         <a
-//         className="spotify-link"
-//         href={"https://open.spotify.com/track/" + answer.id}>open in spotify</a>
-//     </li>) : null))
