@@ -475,3 +475,25 @@ input:placeholder-shown + .form__label {
   margin-left: auto;
   margin-right: auto;
 }
+
+
+th {
+  padding: 5px;
+}
+
+select {
+  background-color: #bbf5bb;
+  border-style: none;
+  border-radius: 5px;
+  height: 18px;
+  border:none;
+  text-align: center;
+  margin-top: 4px;
+  color: rgb(2, 29, 2)
+}
+
+#login-button {
+  max-width: 50%;
+  margin: auto;
+  top: 1em;
+}

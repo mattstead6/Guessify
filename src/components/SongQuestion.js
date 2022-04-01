@@ -84,19 +84,16 @@ function SongQuestion({setPlayerData, token, correctAnswers, setCorrectAnswers, 
     <button style={{listStyleType: "none"}} key={song.id} onClick={e => handleAnswer(e, song.name)} ><b>{song.name}</b></button> ) )
 
      if (correctSong) return (
-        <div>
-            <h2>Guess the name of this song..</h2>
-            <iframe src={correctSong.preview_url} title={correctSong.name} allow="autoplay"></iframe>
-            <div >
-                <ul style={{padding: '0'}} >
-                    {multipleChoice}
-                </ul>
-            </div>
-            <div className="countdown-container">
-                <h3>{timeRemaining} seconds left</h3>
-            </div>
-        </div>
-        
+        <>
+        <h2>Guess the name of this song..</h2>
+        <img style={{maxWidth: '20%'}} src='/images/guessify-mascot1.gif' alt='Dancing mascot'></img>
+         <audio autoPlay controls src={correctSong.preview_url} title={correctSong.name} ></audio>
+
+           <ul style={{padding: '0'}} >
+          {multipleChoice}
+           </ul>
+           <h3>{timeRemaining} seconds left</h3>
+        </>
     )
 
     else {

@@ -42,6 +42,7 @@ function Leaderboard ({playerData, correctAnswers, setCorrectAnswers, isHard}) {
     ))
 
 
+
     return (
         <div >
             <div className="parent-parent-container" >

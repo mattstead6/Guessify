@@ -35,6 +35,7 @@ function Home({handleSubmit, setPlayerData, playerData, resetPlayerData, toggleI
         <> 
 
       
+
                 <button onClick={handleInstructions}><b>Instructions</b></button>
                 {instructions ? 
                 <div>
@@ -45,9 +46,10 @@ function Home({handleSubmit, setPlayerData, playerData, resetPlayerData, toggleI
                 :
                 null
                 }
+
                 
            
-           <img style={{maxWidth: '30%'}} src="/images/GUESSIFY.png" alt='Guessify logo'/>
+           <img style={{maxWidth: '60%'}} src="/images/GUESSIFY.png" alt='Guessify logo'/>
             <h2>Play Now</h2>
 
             <form onSubmit={handleSubmit}>
@@ -55,9 +57,11 @@ function Home({handleSubmit, setPlayerData, playerData, resetPlayerData, toggleI
                 <button type="submit"><b>Start Game</b></button>
             </form>       
             <button onClick={() => navigate("./Leaderboard")}><b>Leaderboard</b></button>
+
             {isHard ? <button className="normal" onClick={toggleIsHard}><b>Click For Normal Mode</b></button>
             :
             <button className= "hard" onClick={toggleIsHard}><b>Click For Hard Mode</b></button>}
+
         </>
     )
 }
