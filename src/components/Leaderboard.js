@@ -62,11 +62,13 @@ function Leaderboard ({playerData, correctAnswers, setCorrectAnswers, isHard}) {
                                             <th>Name</th>
                                             <th>Final Score</th>
                                             <th>Difficulty</th>
+                                            <th>
                                             <select onChange={handleCategory}>
                                                 <option>All</option>
                                                 <option>Normal</option>
                                                 <option>Hard</option>
                                             </select>
+                                            </th>
                                         </tr>
                                     </thead>
                                     <tbody>

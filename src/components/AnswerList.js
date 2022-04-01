@@ -1,7 +1,6 @@
 
 
 function AnswerList({correctAnswers}) {
-    console.log(correctAnswers)
 
     return (
         <div className="answer-list-container">

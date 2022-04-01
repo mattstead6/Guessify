@@ -500,3 +500,11 @@ select {
 .check {
   float: right;
 }
+
+.game-container {
+  border: 5px solid;
+  margin: auto;
+  max-width: 75%;
+  border-radius: 12px;
+  border-color: #00ff0a;
+}

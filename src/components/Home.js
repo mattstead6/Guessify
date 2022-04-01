@@ -40,8 +40,8 @@ function Home({handleSubmit, setPlayerData, playerData, resetPlayerData, toggleI
                 {instructions ? 
                 <div>
                 <p className="instructions">This is a simple game, but to be ranked in the top 5 is no simple task. </p>
-                <p className="instructions">  <button onClick={()=>setIsHard(false)}><b>Normal Mode</b></button> Guess the song you hear. You have 10 seconds. There are 4 options to select from.</p>
-                  <p className="instructions">  <button onClick={()=>setIsHard(true)} className="normal"><b>Hard Mode</b></button> Guess the song you hear. You have 5 seconds. There are 7 options to select from.</p>
+                <p className="instructions">  <button onClick={()=>setIsHard(false)}><b>Normal Mode</b></button>You have 60 seconds.10 seconds to guess the song you hear. There are 4 options to select from.</p>
+                  <p className="instructions">  <button onClick={()=>setIsHard(true)} className="normal"><b>Hard Mode</b></button>You have 60 seconds. 5 seconds to guess each song you hear. There are 7 options to select from.</p>
                </div>
                 :
                 null

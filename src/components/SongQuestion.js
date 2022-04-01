@@ -3,8 +3,7 @@ import {useNavigate} from "react-router-dom";
 
 
 
-let scorrr = 0
-function SongQuestion({setPlayerData, token, correctAnswers, setCorrectAnswers, isHard}){
+function SongQuestion({setPlayerData, token, setCorrectAnswers, isHard}){
 
 
 
@@ -17,6 +16,7 @@ function SongQuestion({setPlayerData, token, correctAnswers, setCorrectAnswers, 
     const alphabet = "abcdefghijklmnopqrstuvwxyz"
     let randomChar = alphabet.charAt(Math.floor(Math.random() * alphabet.length))
 
+    
     useEffect(() => {
         //retrieves initial song data
         if (!allSongs.find(song => song.preview_url)) getSongs()
@@ -25,11 +25,12 @@ function SongQuestion({setPlayerData, token, correctAnswers, setCorrectAnswers, 
          setTimeRemaining(timeRemaining - 1)
          }
          else{
+           setCorrectAnswers((prev) => [...prev, {song: correctSong, wasCorrect: false}])  
            getSongs()
            .then(setTimeRemaining(isHard? 5 : 10)) 
            setPlayerData(prev => ({...prev, totalplayed: prev.totalplayed + 1})) 
          }
-        window.scrollTo({top: 600, behavior: 'smooth'})
+        window.scrollTo({top: 500, behavior: 'smooth'})
        },1000) ;
        return () => {clearTimeout(timeID)}  
     
@@ -54,27 +55,26 @@ function SongQuestion({setPlayerData, token, correctAnswers, setCorrectAnswers, 
         function handleSongBatch(songs) {
             setCorrectSong(() => songs.find(song => song.preview_url))
             setAllSongs(songs.sort((a, b) => 0.5 - Math.random()))
-            //setCorrectAnswers((prev) => [...prev, correctSong])
-            setTimeRemaining(10)
+            setTimeRemaining(isHard? 5 : 10)
+    
         }
 
     
         
         function handleAnswer(e, answer) {
-            scorrr+=5
-            console.log(scorrr)
-            setTimeRemaining(isHard ? 10 : 5)
-
-        if (answer === correctSong.name){
-            setPlayerData((playerData) => ({...playerData, score: playerData.score + 5,totalcorrect: playerData.totalcorrect + 1,totalplayed: playerData.totalplayed + 1}))
-            setCorrectAnswers((prev) => [...prev, {song: correctSong, wasCorrect: true}])
-        }
-        else{
-            setPlayerData((playerData) => ({...playerData, totalplayed: playerData.totalplayed + 1}))
-            setCorrectAnswers((prev) => [...prev, {song: correctSong, wasCorrect: false}])
-        }
-        getSongs()
-        // setTimeRemaining(10)
+        if (!e.target.disabled) {    
+            setTimeRemaining(isHard ? 5 : 10)
+            if (answer === correctSong.name){
+                setPlayerData((playerData) => ({...playerData, score: playerData.score + 5,totalcorrect: playerData.totalcorrect + 1,totalplayed: playerData.totalplayed + 1}))
+                setCorrectAnswers((prev) => [...prev, {song: correctSong, wasCorrect: true}])
+            }
+            else{
+                setPlayerData((playerData) => ({...playerData, totalplayed: playerData.totalplayed + 1}))
+                setCorrectAnswers((prev) => [...prev, {song: correctSong, wasCorrect: false}])
+            }
+            getSongs()
+        } 
+            e.target.disabled = true
     }
 
 
