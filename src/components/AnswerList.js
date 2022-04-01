@@ -14,8 +14,8 @@ function AnswerList({correctAnswers}) {
                         correctAnswers.map(answer => (
                             answer.song.name === undefined ? null :
                             <li key = {answer.id}><p>
-                                <b className="song-details">Title: </b>{answer.song.name}, <b className="song-details">Artist: </b>{answer.song.artists[0].name}
-                                    {answer.wasCorrect ? <span style={{float:left}}>✔️</span> : null}
+                                <strong className="song-details">Title: </strong>{answer.song.name}, <strong className="song-details">Artist: </strong>{answer.song.artists[0].name}
+                                    {answer.wasCorrect ? <span className="check">✔️</span> : null}
                                 <br/> <a
                                     className="spotify-link"
                                     href={"https://open.spotify.com/track/" + answer.id}
