@@ -346,7 +346,7 @@ input:placeholder-shown + .form__label {
   padding: 10px;
 }
 .list-container {
-  padding: 0;
+  padding: 1.5em;
 
   border: 5px solid;
   height: 25em;
@@ -360,7 +360,7 @@ input:placeholder-shown + .form__label {
   list-style-type: none;
 
   text-align: left;
-  margin-left: 2em;
+  margin-left: 1em;
   text-indent: -2em;
 }
 
@@ -476,7 +476,6 @@ input:placeholder-shown + .form__label {
   margin-right: auto;
 }
 
-
 th {
   padding: 5px;
 }
@@ -486,14 +485,18 @@ select {
   border-style: none;
   border-radius: 5px;
   height: 18px;
-  border:none;
+  border: none;
   text-align: center;
   margin-top: 4px;
-  color: rgb(2, 29, 2)
+  color: rgb(2, 29, 2);
 }
 
 #login-button {
   max-width: 50%;
   margin: auto;
   top: 1em;
+}
+
+.check {
+  float: right;
 }

@@ -1,8 +1,7 @@
-import {useEffect, useState} from 'react'
 
 
 function GameOver({playerData, scores}) {
-    const [place, setPlace] = useState(0)
+   
     // below 2 functions finds position on leaderboard based on matching details
     
     function suffixMe(num) {
@@ -28,7 +27,7 @@ function GameOver({playerData, scores}) {
 
     return (
       <>
-        <img style={{maxWidth:'30%'}} src='/images/game over.png' />
+        <img style={{maxWidth:'30%'}} alt="game over" src='/images/game over.png' />
           <div className='game-over-info stuff'>
 
             <h4>Final Score: <b>{playerData.score} Points</b> </h4>
