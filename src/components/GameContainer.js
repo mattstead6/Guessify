@@ -11,15 +11,15 @@ function GameContainer({setPlayerData, token, playerData, resetPlayerData, corre
 
     //full gametimer, player has 60 seconds to guess as many songs as possible
 
-    const [gameTimer, setGameTimer] = useState(61) 
+    const [gameTimer, setGameTimer] = useState(isHard? 31 : 61) 
 
     const [gameOver, setGameOver] = useState(false) 
     const navigate = useNavigate()
     useDocumentTitle('GUESSIFY GAME TIME')
 
-    // useEffect(() => {
-    //     setCorrectAnswers([]);
-    // },[])
+    useEffect(() => {
+        setCorrectAnswers([]);
+    },[])
    
     useEffect(() => { //retrieves initial song data
        const timeID = setTimeout(() => {
@@ -53,9 +53,9 @@ function GameContainer({setPlayerData, token, playerData, resetPlayerData, corre
     
     return (
         <>
-        <div>
-            <div>
                 <img style={{maxWidth:'30%'}} src='/images/guess this song.png' alt='Guess this song' />
+        <div className='game-container'>
+            <div>
             </div>
             <div>
                 <p><b style={{color: '#FF00FF'}}>Player:</b> {playerData.username}</p>
