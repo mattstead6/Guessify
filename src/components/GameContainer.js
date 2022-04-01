@@ -58,7 +58,7 @@ function GameContainer({setPlayerData, token, playerData, resetPlayerData, corre
                 <img style={{maxWidth:'30%'}} src='/images/guess this song.png' alt='Guess this song' />
             </div>
             <div>
-                <p>Your name: {playerData.username}</p>
+                <p><b style={{color: '#FF00FF'}}>Player:</b> {playerData.username}</p>
             </div>
             <div>
                 {isHard ? <h4>This is Hard Mode..good luck</h4> : <h4>This is Normal mode</h4>} 
@@ -68,7 +68,7 @@ function GameContainer({setPlayerData, token, playerData, resetPlayerData, corre
 
             
         </div>
-        <button onClick={() => navigate("/")}><b>Return To Main</b></button>
+        <button onClick={() => navigate("/")}><b>Quit</b></button>
         
         </>
     )
