@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { STAT_URL, useDocumentTitle, } from "./utilites";
+import { STAT_URL, useDocumentTitle, } from "../utilites";
 import GameOver from "./GameOver";
 import AnswerList from "./AnswerList";
 
@@ -30,7 +30,7 @@ function Leaderboard ({playerData, correctAnswers, setCorrectAnswers, isHard}) {
     }
 
     
-    const filteredItems = category==='All'?scores:scores.filter((player) => player.mode === category)
+    const filteredItems = category === 'All' ?scores:scores.filter((player) => player.mode === category)
     
 
     const displayBoard = filteredItems.map(score => (

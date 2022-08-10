@@ -5,7 +5,7 @@ import {useEffect, useState} from "react"
 import GameContainer from './components/GameContainer';
 import Leaderboard from './components/Leaderboard';
 import Home from './components/Home';
-import { AUTH_KEYS } from './components/utilites';
+import { AUTH_KEYS } from './utilites';
          
   const resetPlayer = {
     username: "", 

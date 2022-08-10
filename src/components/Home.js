@@ -1,6 +1,6 @@
 import {useNavigate} from "react-router-dom";
 import {useEffect, useState} from "react";
-import { useDocumentTitle } from "./utilites";
+import { useDocumentTitle } from "../utilites";
 
 
 

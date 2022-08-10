@@ -1,8 +1,8 @@
 
 import { useState, useEffect } from "react";
-import { useDocumentTitle } from "./utilites";
+import { useDocumentTitle } from "../utilites";
 import SongQuestion from "./SongQuestion";
-import { fetchConfigObj, STAT_URL } from "./utilites";
+import { fetchConfigObj, STAT_URL } from "../utilites";
 import { useNavigate } from "react-router-dom"
 
 
