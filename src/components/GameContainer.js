@@ -50,7 +50,6 @@ function GameContainer({setPlayerData, token, playerData, resetPlayerData, corre
 
  
 
-    
     return (
         <>
                 <img style={{maxWidth:'30%'}} src='/images/guess this song.png' alt='Guess this song' />

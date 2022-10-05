@@ -20,9 +20,6 @@ function App() {
   const [playerData ,setPlayerData] = useState(resetPlayer)
   const [correctAnswers, setCorrectAnswers] = useState([])
   const [isHard, setIsHard] = useState(false)
-
-
-
   
 
   let navigate = useNavigate();

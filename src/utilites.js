@@ -14,7 +14,7 @@ export function useDocumentTitle(title) {
   },[title])
 }
 
-export const AUTH_KEYS ={ CLIENT_ID: "1b216146515042f496e489247206abec", 
+export const AUTH_KEYS ={ CLIENT_ID: "3ff2acf3ef7d4bd8833a55d0416b3228", 
 REDIRECT_URI: "https://guessify-ny.herokuapp.com",
 AUTH_ENDPOINT: "https://accounts.spotify.com/authorize",
 RESPONSE_TYPE: "token"
