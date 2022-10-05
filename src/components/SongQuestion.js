@@ -30,7 +30,7 @@ function SongQuestion({setPlayerData, token, setCorrectAnswers, isHard}){
            .then(setTimeRemaining(isHard? 5 : 10)) 
            setPlayerData(prev => ({...prev, totalplayed: prev.totalplayed + 1})) 
          }
-        window.scrollTo({top: 500, behavior: 'smooth'})
+        // window.scrollTo({top: 500, behavior: 'smooth'})
        },1000) ;
        return () => {clearTimeout(timeID)}  
     
@@ -39,7 +39,8 @@ function SongQuestion({setPlayerData, token, setCorrectAnswers, isHard}){
  
    
      function getSongs() {
-       return fetch(isHard ? `https://api.spotify.com/v1/search?q=%25${randomChar}%25&type=track&limit=7&offset=${Math.floor(Math.random() * 1000)}`
+        //return
+       fetch(isHard ? `https://api.spotify.com/v1/search?q=%25${randomChar}%25&type=track&limit=7&offset=${Math.floor(Math.random() * 1000)}`
        : `https://api.spotify.com/v1/search?q=%25${randomChar}%25&type=track&limit=4&offset=${Math.floor(Math.random() * 1000)}`, 
         {
             method: 'GET',

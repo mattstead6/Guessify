@@ -23,3 +23,4 @@ RESPONSE_TYPE: "token"
 
 // export const STAT_URL = "http://localhost:3001/scores"
 export const STAT_URL = "/scores"
+
