@@ -15,7 +15,7 @@ export function useDocumentTitle(title) {
 }
 
 export const AUTH_KEYS ={ CLIENT_ID: "3ff2acf3ef7d4bd8833a55d0416b3228", 
-REDIRECT_URI: "https://spotify-guess-game.herokuapp.com/",
+REDIRECT_URI: "https://spotify-guess-game.herokuapp.com",
 AUTH_ENDPOINT: "https://accounts.spotify.com/authorize",
 RESPONSE_TYPE: "token"
 }  
