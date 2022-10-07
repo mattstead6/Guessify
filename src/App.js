@@ -7,6 +7,7 @@ import Leaderboard from './components/Leaderboard';
 import Home from './components/Home';
 import { AUTH_KEYS } from './utilites';
          
+// blank player data
   const resetPlayer = {
     username: "", 
     score: 0,  
@@ -28,13 +29,15 @@ function App() {
     const hash = window.location.hash;
     let token = window.localStorage.getItem("token")
 
-
+// if access token in local storage, store code in 'token' variable
     if (!token && hash) {
       token = hash.substring(1).split("&").find(element => element.startsWith("access_token")).split("=")[1]
 
       window.location.hash = ""
       window.localStorage.setItem("token", token)
     }
+
+    // ## TODO: implement useContext to broadcast token to components instead of useState
     setToken(token)
   }, [])
 
@@ -43,7 +46,7 @@ function App() {
     window.localStorage.removeItem("token")
   }
 
-  
+  // handle submitting the oepning form to start game
   function handleSubmit(e){
     if (token) {
     e.preventDefault();
@@ -55,7 +58,7 @@ function App() {
     }
 
   }
-
+  // resets player data to 0, "", etc.
   function resetPlayerData() {
     setPlayerData(resetPlayer);
   }

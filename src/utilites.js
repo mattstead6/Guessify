@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 
+// abstraction for all fetch requests
 export function fetchConfigObj(method, body) {
   return { method,
            headers : { 'Content-Type': 'application/json',
@@ -7,12 +8,12 @@ export function fetchConfigObj(method, body) {
            body : JSON.stringify(body)
          }
 }
-
-export function useDocumentTitle(title) {
-  useEffect(()=> {
-    document.title = title
-  },[title])
-}
+// really pointless function
+// export function useDocumentTitle(title) {
+//   useEffect(()=> {
+//     document.title = title
+//   },[title])
+// }
 
 export const AUTH_KEYS ={ CLIENT_ID: "3ff2acf3ef7d4bd8833a55d0416b3228", 
 REDIRECT_URI: "https://spotify-guess-game.herokuapp.com",
@@ -24,3 +25,4 @@ RESPONSE_TYPE: "token"
 // export const STAT_URL = "http://localhost:3001/scores"
 export const STAT_URL = "/scores"
 
+// client secret so other developers can't use app

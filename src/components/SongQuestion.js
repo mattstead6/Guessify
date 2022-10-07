@@ -19,6 +19,7 @@ function SongQuestion({setPlayerData, token, setCorrectAnswers, isHard}){
     
     useEffect(() => {
         //retrieves initial song data
+        
         if (!allSongs.find(song => song.preview_url)) getSongs()
         const timeID = setTimeout(() => {
          if (timeRemaining > 0) {
@@ -37,6 +38,7 @@ function SongQuestion({setPlayerData, token, setCorrectAnswers, isHard}){
          
      }, [timeRemaining])
  
+
    
      function getSongs() {
        return fetch(isHard ? `https://api.spotify.com/v1/search?q=%25${randomChar}%25&type=track&limit=7&offset=${Math.floor(Math.random() * 1000)}`
