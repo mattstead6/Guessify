@@ -9,11 +9,11 @@ export function fetchConfigObj(method, body) {
          }
 }
 // really pointless function
-// export function useDocumentTitle(title) {
-//   useEffect(()=> {
-//     document.title = title
-//   },[title])
-// }
+export function useDocumentTitle(title) {
+  useEffect(()=> {
+    document.title = title
+  },[title])
+}
 
 export const AUTH_KEYS ={ CLIENT_ID: "3ff2acf3ef7d4bd8833a55d0416b3228", 
 REDIRECT_URI: "https://spotify-guess-game.herokuapp.com",

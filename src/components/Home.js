@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
-// import { useDocumentTitle } from "../utilites";
+import { useDocumentTitle } from "../utilites";
 
 
 
@@ -10,7 +10,7 @@ function Home({ handleSubmit, setPlayerData, playerData, resetPlayerData, toggle
 
     const [instructions, setInstructions] = useState(false)
 
-    // useDocumentTitle("GUESSIFY HOME")
+    useDocumentTitle("GUESSIFY HOME")
     useEffect(() => (
         resetPlayerData()
     ), [])
