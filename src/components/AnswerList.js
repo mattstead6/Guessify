@@ -15,7 +15,7 @@ function AnswerList({correctAnswers}) {
                             answer.song.name === undefined ? null :
                             <li key = {answer.song.id}><p>
                                 <strong className="song-details">Title: </strong>{answer.song.name}, <strong className="song-details">Artist: </strong>{answer.song.artists[0].name}
-                                    {answer.wasCorrect ? <span className="check">✔️</span> : null}
+                                    {answer.wasCorrect ? <span className="check">✔️</span> : <span className="cross">x</span>}
                                 <br/> <a style={{textDecoration: 'none', fontWeight: '800', color:'#7800f0'}}
                                     className="spotify-link"
                                     href={"https://open.spotify.com/track/" + answer.song.id}

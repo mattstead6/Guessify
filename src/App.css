@@ -510,6 +510,7 @@ select {
 
 .check {
   float: right;
+  color: #00ff0a;
 }
 
 .game-container {
