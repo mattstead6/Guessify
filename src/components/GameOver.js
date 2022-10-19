@@ -18,7 +18,9 @@ function GameOver({playerData, scores}) {
         }
       }
 
-        
+     // using modulo to solve an issue of categorizing numbers to the suffix that they 
+     // need and implementing a solution for the edge casees of 11 12 and 13    
+
     function findPlayerPosition(player) {
           
       const num = scores.indexOf(scores.find(score => player.username === score.username && player.score === score.score && player.totalcorrect === score.totalcorrect)) + 1

@@ -137,6 +137,22 @@
       "totalplayed": 8,
       "mode": "Normal",
       "id": 20
+    },
+    {
+      "username": "Matt",
+      "score": 5,
+      "totalcorrect": 1,
+      "totalplayed": 5,
+      "mode": "Hard",
+      "id": 21
+    },
+    {
+      "username": "M",
+      "score": 10,
+      "totalcorrect": 2,
+      "totalplayed": 6,
+      "mode": "Hard",
+      "id": 22
     }
   ]
 }

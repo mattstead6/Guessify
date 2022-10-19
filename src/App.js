@@ -22,6 +22,8 @@ function App() {
   const [correctAnswers, setCorrectAnswers] = useState([])
   const [isHard, setIsHard] = useState(false)
   
+// TO DO :  clear the local storage token 
+
 
   let navigate = useNavigate();
 
