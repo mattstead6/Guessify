@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 
 
 
-function SongQuestion({ setPlayerData, token, setCorrectAnswers, isHard }) {
+function SongQuestion({ setPlayerData, token, setCorrectAnswers, isHard, gameTimer }) {
 
 
 
@@ -16,6 +16,7 @@ function SongQuestion({ setPlayerData, token, setCorrectAnswers, isHard }) {
     const alphabet = "abcdefghijklmnopqrstuvwxyz"
     let randomChar = alphabet.charAt(Math.floor(Math.random() * alphabet.length))
 
+    console.log(gameTimer)
 
     useEffect(() => {
         //retrieves initial song data
@@ -93,13 +94,14 @@ function SongQuestion({ setPlayerData, token, setCorrectAnswers, isHard }) {
     if (correctSong) return (
         <>
             <h2>Guess the name of this song..</h2>
+            <h3>{gameTimer}</h3>
             <img style={{ maxWidth: '20%' }} src='/images/guessify-mascot1.gif' alt='Dancing mascot'></img>
             <audio autoPlay controls src={correctSong.preview_url} title='Nice try bucko!' ></audio>
 
             <ul style={{ padding: '0' }} >
                 {multipleChoice}
             </ul>
-            <h3>{timeRemaining} seconds left</h3>
+            {timeRemaining === 1 ? <h3>{timeRemaining} second left</h3> : <h3>{timeRemaining} seconds left</h3>} 
         </>
     )
 

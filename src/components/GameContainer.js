@@ -10,8 +10,7 @@ import { useNavigate } from "react-router-dom"
 function GameContainer({setPlayerData, token, playerData, resetPlayerData, correctAnswers, setCorrectAnswers, isHard}) {
 
     // total gametime, player has 30 (on hard mode) or 60 seconds to guess as many songs as possible
-    const [gameTimer, setGameTimer] = useState(isHard? 31 : 61) 
-
+    const [gameTimer, setGameTimer] = useState(isHard? 31 : 60) 
     const [gameOver, setGameOver] = useState(false) 
     const navigate = useNavigate()
     useDocumentTitle('GUESSIFY GAME TIME')
@@ -63,7 +62,7 @@ function GameContainer({setPlayerData, token, playerData, resetPlayerData, corre
                 {isHard ? <h4>This is Hard Mode..good luck</h4> : <h4>This is Normal mode</h4>} 
             </div>
 
-            {!gameOver? <SongQuestion isHard={isHard} token={token} setPlayerData={setPlayerData} correctAnswers={correctAnswers} setCorrectAnswers={setCorrectAnswers}/> : <p>Posting Score...</p>}
+            {!gameOver? <SongQuestion gameTimer={gameTimer} isHard={isHard} token={token} setPlayerData={setPlayerData} correctAnswers={correctAnswers} setCorrectAnswers={setCorrectAnswers}/> : <p>Posting Score...</p>}
 
             
         </div>
