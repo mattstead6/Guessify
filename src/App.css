@@ -509,8 +509,11 @@ select {
 }
 
 .check {
-  float: right;
   color: #00ff0a;
+}
+
+.cross {
+  color: red;
 }
 
 .game-container {
@@ -519,4 +522,9 @@ select {
   max-width: 75%;
   border-radius: 12px;
   border-color: #00ff0a;
+}
+
+.answer-list p {
+  display: flex;
+  justify-content: space-between;
 }
