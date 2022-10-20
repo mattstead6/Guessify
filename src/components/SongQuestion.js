@@ -7,11 +7,8 @@ function SongQuestion({ setPlayerData, token, setCorrectAnswers, isHard, gameTim
 
 
 
-    // question timer moved into songQuestion for bug purposes and to make it more modular
     const [correctSong, setCorrectSong] = useState({})
     const [allSongs, setAllSongs] = useState([])
-
-
     const [timeRemaining, setTimeRemaining] = useState(isHard ? 5 : 10);
     const alphabet = "abcdefghijklmnopqrstuvwxyz"
     let randomChar = alphabet.charAt(Math.floor(Math.random() * alphabet.length))
@@ -19,7 +16,6 @@ function SongQuestion({ setPlayerData, token, setCorrectAnswers, isHard, gameTim
     console.log(gameTimer)
 
     useEffect(() => {
-        //retrieves initial song data
 
         if (!(allSongs.find(song => song.preview_url))) getSongs()
         const timeID = setTimeout(() => {
@@ -32,20 +28,12 @@ function SongQuestion({ setPlayerData, token, setCorrectAnswers, isHard, gameTim
                     .then(setTimeRemaining(isHard ? 5 : 10))
                 setPlayerData(prev => ({ ...prev, totalplayed: prev.totalplayed + 1 }))
             }
-            // window.scrollTo({top: 500, behavior: 'smooth'})
         }, 1000);
         return () => { clearTimeout(timeID) }
 
     }, [timeRemaining])
 
-    // 
-    // state setter function line 29 => 
-
-
-    //scope & closure
-
     function getSongs() {
-        // clear the local storage token 
         return fetch(isHard ? `https://api.spotify.com/v1/search?q=%25${randomChar}%25&type=track&limit=7&offset=${Math.floor(Math.random() * 1000)}`
             : `https://api.spotify.com/v1/search?q=%25${randomChar}%25&type=track&limit=4&offset=${Math.floor(Math.random() * 1000)}`,
             {
@@ -86,7 +74,7 @@ function SongQuestion({ setPlayerData, token, setCorrectAnswers, isHard, gameTim
     }
 
 
-    // array of answers made up of current song and 3 random songs
+
     const multipleChoice = allSongs.map(song => (
         // <li style={{listStyleType: "none"}} key={song.id} ><button onClick={e => handleAnswer(e.target.name)} name={song.name}><b>{song.name}</b></button></li> ) )
         <button style={{ listStyleType: "none" }} key={song.id} onClick={e => handleAnswer(e, song.name)} ><b>{song.name}</b></button>))

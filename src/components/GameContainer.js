@@ -9,7 +9,6 @@ import { useNavigate } from "react-router-dom"
 
 function GameContainer({setPlayerData, token, playerData, resetPlayerData, correctAnswers, setCorrectAnswers, isHard}) {
 
-    // total gametime, player has 30 (on hard mode) or 60 seconds to guess as many songs as possible
     const [gameTimer, setGameTimer] = useState(isHard? 31 : 60) 
     const [gameOver, setGameOver] = useState(false) 
     const navigate = useNavigate()
@@ -19,11 +18,10 @@ function GameContainer({setPlayerData, token, playerData, resetPlayerData, corre
         setCorrectAnswers([]);
     },[])
    
-    useEffect(() => { //retrieves initial song data
+    useEffect(() => { 
        const timeID = setTimeout(() => {
         if (gameTimer > 1) {
             setGameTimer(gameTimer - 1)
-        // console.log(gameTimer)
         }
         else if (gameTimer === 1){
             setGameOver(true)
@@ -37,9 +35,7 @@ function GameContainer({setPlayerData, token, playerData, resetPlayerData, corre
         
     }, [gameTimer])
 
-    
-    // calculates score based on mode difficulty
-    // posting game data (score, username) to the leaderboard json server
+
     function handlePOSTRecord(){
 
        fetch(STAT_URL, fetchConfigObj('POST', {...playerData, score: playerData.totalcorrect * 5, mode: isHard ? "Hard" : "Normal"}))

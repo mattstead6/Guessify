@@ -2,7 +2,6 @@
 
 function GameOver({playerData, scores}) {
    
-    // below 2 functions finds position on leaderboard based on matching details
     
     function suffixMe(num) {
         const j = num % 10,
@@ -17,9 +16,6 @@ function GameOver({playerData, scores}) {
           return `${num}th`;
         }
       }
-
-     // using modulo to solve an issue of categorizing numbers to the suffix that they 
-     // need and implementing a solution for the edge casees of 11 12 and 13    
 
     function findPlayerPosition(player) {
           

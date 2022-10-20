@@ -15,21 +15,11 @@ function Home({ handleSubmit, setPlayerData, playerData, resetPlayerData, toggle
         resetPlayerData()
     ), [])
 
-    // function handleStartGame(e) {
-    //     if (pplayerData.username)
-    // }
-
     const navigate = useNavigate();
 
     function handleInstructions() {
         setInstructions(() => !instructions)
     }
-
-
-
-    // function openShit() {
-    //    window.open("");
-    // }
 
     return (
         <>

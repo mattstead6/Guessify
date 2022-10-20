@@ -22,7 +22,6 @@ function App() {
   const [correctAnswers, setCorrectAnswers] = useState([])
   const [isHard, setIsHard] = useState(false)
   
-// TO DO :  clear the local storage token 
 
 
   let navigate = useNavigate();
@@ -31,7 +30,6 @@ function App() {
     const hash = window.location.hash;
     let token = window.localStorage.getItem("token")
 
-// if access token in local storage, store code in 'token' variable
     if (!token && hash) {
       token = hash.substring(1).split("&").find(element => element.startsWith("access_token")).split("=")[1]
 

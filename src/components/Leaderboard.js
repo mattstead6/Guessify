@@ -9,7 +9,6 @@ function Leaderboard ({playerData, correctAnswers, setCorrectAnswers, isHard}) {
     const [category, setCategory] = useState("All")
     const navigate = useNavigate()
     useDocumentTitle("GUESSIFY LEADERBOARD")
-    //let editedAnswers = correctAnswers.slice(1);
     
     useEffect(()=> {
         fetch(STAT_URL)

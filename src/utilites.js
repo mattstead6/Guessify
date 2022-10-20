@@ -8,7 +8,6 @@ export function fetchConfigObj(method, body) {
            body : JSON.stringify(body)
          }
 }
-// really pointless function
 export function useDocumentTitle(title) {
   useEffect(()=> {
     document.title = title
